@@ -3,6 +3,7 @@
 /**/.env
 /**/node_modules/
 /**/output.md
+/**/output.zip
 /**/own_modules/
 /**/tmp/
 /ctx/
