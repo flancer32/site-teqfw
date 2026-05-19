@@ -1,0 +1,96 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-proof-matrix" id="current-public-proof">
+    <div class="section-head"><p class="eyebrow">Primary Proof</p><h2>Start with this site.</h2></div>
+    <article class="card proof-primary">
+      <h3>teqfw.com</h3>
+      <p class="proof-summary">The current product website is the primary proof product.</p>
+      <dl class="proof-details">
+        <dt>Role</dt>
+        <dd>Live TeqFW-based website produced through the same specification-and-review model described by the ecosystem.</dd>
+        <dt>You can inspect</dt>
+        <dd>The public copy and production code of this site, produced by a Codex agent from human-authored specifications and review.</dd>
+        <dt>Boundary</dt>
+        <dd>This is the current product site itself, not a separate external artifact.</dd>
+      </dl>
+    </article>
+  </section>
+
+  <section class="section mode-proof-matrix">
+    <div class="section-head"><p class="eyebrow">Inspection Points</p><h2>Inspect the public artifacts.</h2></div>
+    <div class="proof-groups">
+      <article class="proof-set">
+        <h3>TeqFW foundation</h3>
+        <div class="card-grid">
+          <article class="card proof-card">
+            <h3>@teqfw/di</h3>
+            <p><strong>Role:</strong> dependency-container package that forms the technical base of TeqFW.</p>
+            <p><strong>You can inspect:</strong> the public npm package enabling isomorphic JavaScript web applications with late binding without transpilation.</p>
+            <p><strong>Boundary:</strong> created through ADSM methodology and the technical base for TeqFW, but not TeqFW-based.</p>
+            <a href="https://www.npmjs.com/package/@teqfw/di">Inspect npm package</a>
+          </article>
+        </div>
+      </article>
+      <article class="proof-set">
+        <h3>Platform infrastructure</h3>
+        <div class="card-grid">
+          <article class="card proof-card">
+            <h3>@flancer32/teq-web</h3>
+            <p><strong>Role:</strong> TeqFW-based web infrastructure package.</p>
+            <p><strong>You can inspect:</strong> the public npm package used as part of the TeqFW web application ecosystem.</p>
+            <p><strong>Boundary:</strong> the package does not expose the private control layer.</p>
+            <a href="https://www.npmjs.com/package/@flancer32/teq-web">Inspect npm package</a>
+          </article>
+          <article class="card proof-card">
+            <h3>@flancer32/skill-teqfw-esm-validator</h3>
+            <p><strong>Role:</strong> validation tooling for controlled TeqFW development.</p>
+            <p><strong>You can inspect:</strong> the public npm package used to validate TeqFW-oriented JavaScript code.</p>
+            <p><strong>Boundary:</strong> support tooling is not the product platform itself.</p>
+            <a href="https://www.npmjs.com/package/@flancer32/skill-teqfw-esm-validator">Inspect npm package</a>
+          </article>
+        </div>
+      </article>
+      <article class="proof-set">
+        <h3>Workflow automation</h3>
+        <div class="card-grid">
+          <article class="card proof-card">
+            <h3>@teqfw/github-flows</h3>
+            <p><strong>Role:</strong> repository-event workflow infrastructure package.</p>
+            <p><strong>You can inspect:</strong> the public npm package for GitHub-event-driven agent workflow tooling.</p>
+            <p><strong>Boundary:</strong> unfinished workflow demonstrations remain planned.</p>
+            <a href="https://www.npmjs.com/package/@teqfw/github-flows">Inspect npm package</a>
+          </article>
+          <article class="card proof-card">
+            <h3>GitHub Flows App</h3>
+            <p><strong>Role:</strong> TeqFW-based application shell for GitHub Flows.</p>
+            <p><strong>You can inspect:</strong> the public repository for a practical workflow application shell.</p>
+            <p><strong>Boundary:</strong> the shell does not replace the paid explanation of the control layer.</p>
+            <a href="https://github.com/flancer32/github-flows-app">Inspect repository</a>
+          </article>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section mode-boundary-band proof-interpretation">
+    <div class="section-head"><p class="eyebrow">Interpretation</p><h2>What this evidence supports.</h2></div>
+    <p>Together, these artifacts show that the approach is not only a written method: it has produced a live site, public packages, TeqFW-based infrastructure, validation tooling, and workflow tooling.</p>
+    <p>This evidence supports the practical claim that controlled agent-driven JavaScript product work is possible.</p>
+    <p class="boundary-note"><strong>Boundary:</strong> it does not prove universal applicability, mass adoption, finished ecosystem completeness, or future directions such as Mindstream and packaged adoption. This page does not use planned demonstrations, private contexts, gated materials, or paid materials as current public proof.</p>
+  </section>
+
+  <section class="section split">
+    <div><p class="eyebrow">Next Step</p><h2>Next: understand how the control layer works.</h2></div>
+    <div>
+      <p>If the public artifacts make the approach worth studying, continue with the ADSM book, the method overview, or the ecosystem map.</p>
+      <p>The book is the paid explanation layer after inspection, not current public proof in the same sense as public code, packages, repositories, or this site.</p>
+      <div class="route-list">
+        <a href="http://fly.wiredgeese.com/flancer/leanpub/adsm-en/">Open ADSM book</a>
+        <a href="/method">Understand ADSM</a>
+        <a href="/ecosystem">Map the ecosystem</a>
+        <a href="https://www.npmjs.com/package/@teqfw/di">Inspect public artifacts</a>
+      </div>
+    </div>
+  </section>
+{% endblock %}

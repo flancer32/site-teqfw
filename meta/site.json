@@ -1,0 +1,134 @@
+{
+  "site": {
+    "description": "Visitor-centered entry point for controlled JavaScript product evolution with LLM agents.",
+    "lang": "en",
+    "name": "TeqFW",
+    "strapline": "Code is cheap. Show me the spec.",
+    "title": "ADSM and TeqFW Ecosystem",
+    "url": "https://teqfw.com"
+  },
+  "brand": {
+    "ariaLabel": "TeqFW home",
+    "desktopText": "Tequila Framework & ADSM",
+    "homeHref": "/",
+    "logoAlt": "",
+    "logoSrc": "/favicon.ico",
+    "mobileText": "TeqFW / ADSM"
+  },
+  "footer": {
+    "author": {
+      "label": "Alex Gusev",
+      "route": "/contacts"
+    },
+    "identity": "Tequila Framework & ADSM",
+    "statement": "public proof product for controlled agent-driven JavaScript evolution"
+  },
+  "pages": [
+    {
+      "hero": {
+        "cta": "Get the ADSM book",
+        "ctaHref": "http://fly.wiredgeese.com/flancer/leanpub/adsm-en/",
+        "kicker": "For agent-driven JavaScript product work",
+        "title": "Build JavaScript products that agents can safely evolve."
+      },
+      "id": "home",
+      "intro": "For product owners, technical founders, and product-oriented engineers using LLM agents on real JavaScript products where durable control is now the problem.",
+      "isNavigable": false,
+      "route": "/",
+      "summary": "Visitor-centered homepage for controlled JavaScript product evolution with LLM agents, the ADSM book, and inspectable public proof.",
+      "template": "page/index.html",
+      "title": "TeqFW"
+    },
+    {
+      "hero": {
+        "cta": "Inspect proof",
+        "ctaHref": "/proof",
+        "secondaryCta": "Get the ADSM book",
+        "secondaryCtaHref": "http://fly.wiredgeese.com/flancer/leanpub/adsm-en/",
+        "kicker": "Control for agent work",
+        "title": "Keep repeated agent changes under product control."
+      },
+      "id": "method",
+      "intro": "Agents can already write code. The harder problem is keeping product meaning, boundaries, and continuity intact after repeated changes. ADSM, Agent Driven Software Management, is the control layer around repeated LLM-agent work.",
+      "isNavigable": true,
+      "navLabel": "Method",
+      "route": "/method",
+      "summary": "Visitor-centered explanation of ADSM as the control layer around repeated LLM-agent work.",
+      "template": "page/method.html",
+      "title": "Method"
+    },
+    {
+      "hero": {
+        "cta": "Inspect proof",
+        "ctaHref": "/proof",
+        "secondaryCta": "Understand ADSM",
+        "secondaryCtaHref": "/method",
+        "kicker": "Ecosystem orientation",
+        "title": "Map the control stack around agent work."
+      },
+      "id": "ecosystem",
+      "intro": "ADSM, TeqFW, GitHub Flows, public proof, the book, and author practice are not separate assets. They are different control surfaces around the same problem: keeping JavaScript product evolution legible after repeated LLM-agent work.",
+      "isNavigable": true,
+      "navLabel": "Ecosystem",
+      "route": "/ecosystem",
+      "summary": "Map how ADSM, TeqFW, GitHub Flows, public proof, book materials, and authorship work together as a control stack around agent-driven JavaScript product evolution.",
+      "template": "page/ecosystem.html",
+      "title": "Ecosystem"
+    },
+    {
+      "hero": {
+        "cta": "Open GitHub source",
+        "ctaHref": "https://raw.githubusercontent.com/teqfw/di/refs/heads/main/PHILOSOPHY.md",
+        "kicker": "Ecosystem Philosophy",
+        "title": "TeqFW is a philosophy for JavaScript web applications built and evolved with LLM agents."
+      },
+      "id": "ecosystem-philosophy",
+      "intro": "A compact orientation to the architectural principles behind TeqFW, with a link to the maintained source document.",
+      "isNavigable": false,
+      "route": "/ecosystem/philosophy",
+      "summary": "Compact entry point to the TeqFW architectural philosophy for modular monolith web applications in the era of LLM agents.",
+      "template": "page/ecosystem/philosophy.html",
+      "title": "Ecosystem Philosophy"
+    },
+    {
+      "hero": {
+        "cta": "Inspect artifacts",
+        "ctaHref": "#current-public-proof",
+        "kicker": "Trust Verification",
+        "title": "Can LLM agents safely evolve a real JavaScript product?"
+      },
+      "id": "proof",
+      "intro": "LLM agents can generate code quickly. The hard part is keeping the product controllable after repeated changes. This page shows public artifacts you can inspect before trusting the method.",
+      "isNavigable": true,
+      "navLabel": "Proof",
+      "route": "/proof",
+      "summary": "Visitor-centered verification page for inspecting public evidence before trusting controlled agent-driven JavaScript evolution.",
+      "template": "page/proof.html",
+      "title": "Proof Verification"
+    },
+    {
+      "hero": {
+        "cta": "Email Alex",
+        "ctaHref": "mailto:alex@wiredgeese.com",
+        "kicker": "Contacts",
+        "title": "Contact Alex Gusev about TeqFW, ADSM, and ecosystem materials."
+      },
+      "id": "contacts",
+      "intro": "Use these channels for questions about the ecosystem, book-related communication, starter support, paid materials, invoicing, or formal company matters.",
+      "isNavigable": true,
+      "navLabel": "Contacts",
+      "route": "/contacts",
+      "summary": "Compact visitor-centered contact page for TeqFW, ADSM, GitHub Flows, ecosystem materials, formal company details, and a restrained boundary.",
+      "template": "page/contacts.html",
+      "title": "Contacts"
+    }
+  ],
+  "navigation": {
+    "primary": [
+      "/method",
+      "/ecosystem",
+      "/proof",
+      "/contacts"
+    ]
+  }
+}

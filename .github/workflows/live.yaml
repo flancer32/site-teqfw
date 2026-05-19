@@ -1,0 +1,116 @@
+name: LIVE - Build & Deploy site-teqfw (PM2 cluster x4)
+
+on: workflow_dispatch
+
+env:
+  PRJ: teqfw.com
+  APP_DIR: /home/${{ vars.USER }}/inst/site/teqfw.com
+  PM2_APP: site-teqfw
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm run test:unit
+
+      - name: Run integration tests
+        run: npm run test:integration
+
+      - name: Remove dev dependencies
+        run: npm prune --omit=dev
+
+      - name: Build deployment archive
+        run: |
+          zip -qq --exclude=*.git* -r ${{ env.PRJ }}.zip ./
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-archive
+          path: ${{ env.PRJ }}.zip
+          retention-days: 1
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: app-archive
+          path: .
+
+      - name: Copy archive to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ vars.HOST }}
+          username: ${{ vars.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: ${{ env.PRJ }}.zip
+          target: ${{ env.APP_DIR }}
+
+      - name: Deploy application via PM2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.HOST }}
+          username: ${{ vars.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            set -e
+
+            cd "${{ env.APP_DIR }}"
+
+            rm -rf prod.new
+            mkdir -p prod.new
+
+            unzip -qq "${{ env.PRJ }}.zip" -d prod.new
+
+            source ~/.nvm/nvm.sh
+            nvm use node
+
+            TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+
+            # Stop previous runtime if exists
+            pm2 stop "${{ env.PM2_APP }}" || true
+            pm2 delete "${{ env.PM2_APP }}" || true
+
+            # Rotate directories
+            rm -rf prod.old
+            if [ -d prod ]; then
+              mv prod prod.old
+            else
+              mkdir -p prod.old
+            fi
+
+            mv prod.new prod
+
+            # Restore configuration
+            if [ -f prod.old/.env ]; then
+              cp prod.old/.env prod/.env
+            fi
+
+            # Start cluster (4 workers)
+            cd "${{ env.APP_DIR }}/prod"
+
+            pm2 start bin/bootstrap.mjs \
+              --name ${{ env.PM2_APP }} \
+              -i 4
+
+            pm2 save
+
+            cd "${{ env.APP_DIR }}"
+
+            mv "${{ env.PRJ }}.zip" "${{ env.PRJ }}-${TIMESTAMP}.zip"
+
+            echo "Deployment finished"
+            pm2 ls
+            ls -lh "${{ env.APP_DIR }}"

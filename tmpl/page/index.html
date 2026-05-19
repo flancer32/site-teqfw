@@ -1,0 +1,105 @@
+{% extends "layout/home.html" %}
+
+{% block content %}
+  <section class="section split home-problem">
+    <div>
+      <p class="eyebrow">Why control breaks</p>
+      <h2>Repeated agent sessions can scatter product decisions across prompts, chats, and temporary context.</h2>
+    </div>
+    <div>
+      <p>When decisions live in prompts and chats instead of maintained product material, architectural boundaries, reviewability, and continuity become harder to recover.</p>
+      <p>Each new change may look productive while weakening the shared understanding of what the product is allowed to become.</p>
+    </div>
+  </section>
+
+  <section class="section split home-outcome">
+    <div>
+      <p class="eyebrow">What should stay stable</p>
+      <h2>The repository needs product memory that both people and future agents can use.</h2>
+    </div>
+    <div>
+      <p>Maintained specifications, recoverable intent, explicit limits, and a usable review trail keep agent-driven changes attached to the same product.</p>
+    </div>
+  </section>
+
+  <section class="section home-answer">
+    <div class="section-head">
+      <p class="eyebrow">How the control layer works</p>
+      <h2>ADSM, TeqFW, and GitHub Flows keep agent work tied to durable product material.</h2>
+    </div>
+    <div class="card-grid">
+      <article class="card">
+        <h3>ADSM keeps context durable.</h3>
+        <p>Product meaning, specifications, execution boundaries, tasks, reports, and feedback loops live outside one chat session.</p>
+      </article>
+      <article class="card">
+        <h3>TeqFW gives the JavaScript product structure.</h3>
+        <p>Agents work inside a governed product environment with boundaries that remain inspectable by humans.</p>
+      </article>
+      <article class="card">
+        <h3>GitHub Flows keeps execution repository-driven.</h3>
+        <p>GitHub events connect to configured agent work, so changes stay tied to repository control.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section home-slogan" aria-labelledby="home-slogan-title">
+    <h2 id="home-slogan-title">{{ site.strapline }}</h2>
+    <p>The useful question shifts from who can generate code to where the specification and control layer live.</p>
+  </section>
+
+  <section class="section split home-book">
+    <div>
+      <p class="eyebrow">Deeper explanation</p>
+      <h2>The ADSM book explains the control layer behind the public proof.</h2>
+    </div>
+    <div>
+      <p>The book is for visitors who want the full control model: cognitive context, reusable specifications, execution boundaries, tasks, reports, feedback loops, and repository-driven workflow.</p>
+      <p>Proof stays public, so you can inspect the claim before deciding whether the book is useful.</p>
+      <p class="actions actions-compact">
+        <a class="button" href="{{ page.hero.ctaHref }}">{{ page.hero.cta }}</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section home-proof mode-proof-matrix">
+    <div class="section-head">
+      <p class="eyebrow">Public Proof</p>
+      <h2>Public proof stays open for inspection.</h2>
+      <p>The homepage proof set stays limited to the current product site, <code>@teqfw/di</code>, and GitHub Flows.</p>
+    </div>
+    <div class="proof-grid">
+      <article class="card proof-card">
+        <p class="proof-role">Proof product</p>
+        <h3>This site is the proof</h3>
+        <p>The current product website demonstrates documentation-driven agent creation and evolution.</p>
+        <span class="proof-note">This page is part of that proof.</span>
+      </article>
+      <article class="card proof-card">
+        <p class="proof-role">Foundation</p>
+        <h3>@teqfw/di</h3>
+        <p>The dependency-container package that forms the technical base of TeqFW.</p>
+        <a href="https://www.npmjs.com/package/@teqfw/di">Open @teqfw/di</a>
+      </article>
+      <article class="card proof-card">
+        <p class="proof-role">Workflow proof</p>
+        <h3>GitHub Flows</h3>
+        <p>Repository-event-driven workflow proof connecting GitHub events with configured agent execution.</p>
+        <a href="https://www.npmjs.com/package/@teqfw/github-flows">Open GitHub Flows</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section home-routes mode-route-cluster">
+    <div class="section-head">
+      <p class="eyebrow">Where to go next</p>
+      <h2>Continue from the point that matters now.</h2>
+      <p>Inspect the proof, study the control model, or map how the ecosystem pieces fit together.</p>
+    </div>
+    <div class="route-list">
+      <a class="button" href="/proof">View public proof</a>
+      <a class="button button-secondary" href="/method">Understand ADSM</a>
+      <a class="button button-secondary" href="/ecosystem">Map the ecosystem</a>
+    </div>
+  </section>
+{% endblock %}

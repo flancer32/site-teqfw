@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title == "TeqFW" %}{{ page.title }}{% else %}{{ page.title }} · {{ site.name }}{% endif %}</title>
+    <meta name="description" content="{{ page.summary }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.route }}">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="/assets/css/site.css">
+  </head>
+  <body class="{% block body_class %}layout-content{% endblock %}">
+    {% include "partials/site-nav.html" %}
+    <main id="content">
+      {% block page_entry %}{% endblock %}
+      {% block content %}{% endblock %}
+    </main>
+    {% include "partials/site-footer.html" %}
+  </body>
+</html>

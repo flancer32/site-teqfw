@@ -1,0 +1,29 @@
+<header class="site-header">
+  <a class="brand" href="{{ brand.homeHref }}"{% if page.route == brand.homeHref %} aria-current="page"{% endif %} aria-label="{{ brand.ariaLabel }}">
+    <img class="brand__mark" src="{{ brand.logoSrc }}" alt="{{ brand.logoAlt }}" width="32" height="32">
+    <span class="brand__name">
+      <span class="brand__name-desktop">{{ brand.desktopText }}</span>
+      <span class="brand__name-mobile">{{ brand.mobileText }}</span>
+    </span>
+  </a>
+  <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
+    <ul class="nav-list">
+      {% for item in navigation %}
+        <li><a href="{{ item.href }}"{% if item.isCurrent %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+  <details class="site-nav site-nav--mobile">
+    <summary class="nav-toggle" aria-label="Open primary navigation">
+      <span class="nav-toggle__icon" aria-hidden="true"></span>
+      <span class="nav-toggle__text">Menu</span>
+    </summary>
+    <nav aria-label="Primary navigation">
+      <ul class="nav-list">
+        {% for item in navigation %}
+          <li><a href="{{ item.href }}"{% if item.isCurrent %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </details>
+</header>

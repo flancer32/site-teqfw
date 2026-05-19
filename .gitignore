@@ -1,0 +1,9 @@
+/.codex
+/.idea/
+/**/.env
+/**/node_modules/
+/**/output.md
+/**/own_modules/
+/**/tmp/
+/ctx/
+/var/

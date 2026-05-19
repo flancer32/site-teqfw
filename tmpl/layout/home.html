@@ -1,0 +1,33 @@
+{% extends "layout/base.html" %}
+
+{% block body_class %}layout-home{% endblock %}
+
+{% block page_entry %}
+  <header class="page-entry hero mode-split-hero">
+    <div class="hero__copy">
+      <p class="eyebrow">{{ page.hero.kicker }}</p>
+      <h1>{{ page.hero.title }}</h1>
+      <p class="lede">{{ page.intro }}</p>
+      <p>The harder question is whether product meaning, limits, and review trail survive repeated agent work.</p>
+      <p class="actions">
+        <a class="button" href="{{ page.hero.ctaHref }}">{{ page.hero.cta }}</a>
+        <a class="button button-secondary" href="/proof">View public proof</a>
+      </p>
+      <p class="proof-signal">This site itself is proof: it was created by a Codex agent from human-authored specifications and review.</p>
+    </div>
+    <aside class="hero-panel mode-panel-cluster" aria-label="Qualified visitor context">
+      <article>
+        <strong>You already use agents</strong>
+        <span>Or you are ready to use them on product work that must survive repeated changes.</span>
+      </article>
+      <article>
+        <strong>Your product is real</strong>
+        <span>The JavaScript repository carries product meaning, business continuity, and architectural limits.</span>
+      </article>
+      <article>
+        <strong>You need continuity</strong>
+        <span>Agent work has to remain legible to human reviewers and useful to future agents.</span>
+      </article>
+    </aside>
+  </header>
+{% endblock %}

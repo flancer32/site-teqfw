@@ -1,0 +1,45 @@
+{% extends "layout/content.html" %}
+
+{% block page_entry %}
+  <header class="page-entry hero mode-readable-stack">
+    <div class="hero__copy">
+      <p class="eyebrow">{{ page.hero.kicker }}</p>
+      <h1>{{ page.hero.title }}</h1>
+      <p class="lede">{{ page.intro }}</p>
+      <p class="actions">
+        <a class="button" href="{{ page.hero.ctaHref }}">{{ page.hero.cta }}</a>
+      </p>
+    </div>
+  </header>
+{% endblock %}
+
+{% block content %}
+  <section class="section split mode-readable-stack">
+    <div><p class="eyebrow">Context</p><h2>TeqFW is built for web applications that LLM agents can evolve.</h2></div>
+    <p>TeqFW is an architectural philosophy for JavaScript web applications in the era of LLM agents. It is not a universal architecture and not a generic framework manifesto; it is contextual work optimized for modular monolith products that must remain understandable, composable, and governable over time.</p>
+  </section>
+  <section class="section mode-card-grid">
+    <div class="section-head"><p class="eyebrow">Key Principles</p><h2>A compact summary of structure that remains explicit at runtime and readable to agents.</h2></div>
+    <div class="card-grid">
+      <article class="card"><h3>Unified JavaScript</h3><p>Browser and server code stay in one language because the browser is the universal runtime and JavaScript is native to it.</p></article>
+      <article class="card"><h3>Late binding</h3><p>Runtime composition keeps dependencies visible and replaceable without hiding product structure behind static coupling.</p></article>
+      <article class="card"><h3>Explicit contracts</h3><p>Interfaces, namespaces, and metadata make component relationships readable to humans, tools, and LLM agents.</p></article>
+      <article class="card"><h3>Pure JavaScript with JSDoc</h3><p>The codebase uses standard JavaScript and documented types rather than introducing a TypeScript layer.</p></article>
+      <article class="card"><h3>Predictable namespaces</h3><p>Stable names and file paths make modules addressable across documentation, tests, and dependency injection.</p></article>
+      <article class="card"><h3>Agent-oriented structure</h3><p>Code and documentation are arranged so agents can recover intent, boundaries, and change rules from context.</p></article>
+      <article class="card"><h3>Machine interfaces</h3><p>Packages expose structured documentation that helps agents understand public contracts, integration patterns, and architectural assumptions.</p></article>
+    </div>
+  </section>
+  <section class="section split mode-readable-stack">
+    <div><p class="eyebrow">Response</p><h2>TeqFW makes application structure explicit and analyzable.</h2></div>
+    <p>Traditional architectures often hide relationships behind imports, reflection, build pipelines, or undocumented conventions. TeqFW makes dependencies and module relationships visible through explicit contracts, predictable namespaces, runtime linking, and machine-oriented documentation.</p>
+  </section>
+  <section class="section mode-route-cluster">
+    <div class="section-head"><p class="eyebrow">Canonical Source</p><h2>This page is an entry point, not the maintained philosophy text.</h2></div>
+    <p>The full philosophy is maintained with the dependency-container work that forms the technical base of TeqFW.</p>
+    <div class="route-list">
+      <a href="https://raw.githubusercontent.com/teqfw/di/refs/heads/main/PHILOSOPHY.md">Open GitHub source</a>
+      <a href="/ecosystem">Return to ecosystem</a>
+    </div>
+  </section>
+{% endblock %}

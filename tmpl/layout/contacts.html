@@ -1,0 +1,18 @@
+{% extends "layout/base.html" %}
+
+{% block body_class %}layout-contacts{% endblock %}
+
+{% block page_entry %}
+  <header class="page-entry hero mode-readable-stack">
+    <div class="hero__copy">
+      <p class="eyebrow">{{ page.hero.kicker }}</p>
+      <h1>{{ page.hero.title }}</h1>
+      <p class="lede">{{ page.intro }}</p>
+      <p class="actions mode-route-cluster">
+        <a class="button" href="mailto:alex@wiredgeese.com">Email Alex</a>
+        <a class="button button-secondary" href="https://wa.me/37129181801">WhatsApp</a>
+        <a class="button button-secondary" href="https://t.me/wiredgeese">Telegram</a>
+      </p>
+    </div>
+  </header>
+{% endblock %}

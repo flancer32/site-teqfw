@@ -1,0 +1,19 @@
+{% extends "layout/base.html" %}
+
+{% block body_class %}layout-content{% endblock %}
+
+{% block page_entry %}
+  <header class="page-entry hero mode-readable-stack">
+    <div class="hero__copy">
+      <p class="eyebrow">{{ page.hero.kicker }}</p>
+      <h1>{{ page.hero.title }}</h1>
+      <p class="lede">{{ page.intro }}</p>
+      <p class="actions">
+        <a class="button" href="{{ page.hero.ctaHref }}">{{ page.hero.cta }}</a>
+        {% if page.hero.secondaryCta and page.hero.secondaryCtaHref %}
+        <a class="button button-secondary" href="{{ page.hero.secondaryCtaHref }}">{{ page.hero.secondaryCta }}</a>
+        {% endif %}
+      </p>
+    </div>
+  </header>
+{% endblock %}
