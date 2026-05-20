@@ -3,6 +3,21 @@
     {
       "area": "demo",
       "demo": true,
+      "description": "A bounded generated page listing the official James Bond actors and the official films they appear in.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/all-the-bonds/",
+      "slug": "all-the-bonds",
+      "template": "page/demo/pages/all-the-bonds/index.html",
+      "title": "All the Bonds",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/77"
+      }
+    },
+    {
+      "area": "demo",
+      "demo": true,
       "description": "A bounded generated page about Bond girls and the actresses who played them in selected James Bond films.",
       "generated": true,
       "isNavigable": false,
