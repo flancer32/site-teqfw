@@ -14,6 +14,21 @@
       "trajectory": {
         "issueUrl": "https://github.com/flancer32/site-teqfw/issues/70"
       }
+    },
+    {
+      "area": "demo",
+      "demo": true,
+      "description": "A bounded generated page listing the actors who officially played James Bond and the official films in each era.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/all-the-bonds/",
+      "slug": "all-the-bonds",
+      "template": "page/demo/pages/all-the-bonds/index.html",
+      "title": "All the Bonds",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/72"
+      }
     }
   ]
 }
