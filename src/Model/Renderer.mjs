@@ -21,6 +21,7 @@ export default class TeqFw_Site_Model_Renderer {
       if (!page) throw new Error(`Unknown SSR route: ${route}`);
       return env.render(page.template, {
         brand: config.getBrand(),
+        demoPages: pages.getGeneratedDemoPages(),
         footer: config.getFooter(),
         navigation: navigation.getItems(route),
         page,

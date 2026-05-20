@@ -1,0 +1,70 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  {{ super() }}
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Public input boundary</p>
+      <h2>The public input is a constrained GitHub Issue, not arbitrary publishing.</h2>
+    </div>
+    <div>
+      <p>Demo Pages exists to show a bounded workflow surface. A visitor can submit only a constrained GitHub Issue, and the request is processed through GitHub Flows with restricted agent execution rather than through a public editor, CMS, website builder, or user-hosting surface.</p>
+      <p>The goal is workflow visibility: public intent enters through the issue, and the resulting page remains a subordinate demonstration artifact listed from validated workflow metadata.</p>
+    </div>
+  </section>
+
+  <section class="section split mode-status-separated-group">
+    <div>
+      <p class="eyebrow">Validation boundary</p>
+      <h2>Only machine-validated generated changes may continue toward publication.</h2>
+    </div>
+    <div class="status-list">
+      <p><strong>Restricted execution:</strong> GitHub Flows and a bounded agent profile prepare the change inside the normal SSR and Nunjucks site pipeline.</p>
+      <p><strong>Required gate:</strong> invalid generated metadata or generated templates stop the path before publication.</p>
+      <p><strong>Normal successful path:</strong> validated changes proceed through pull request, merge, GitHub Action deployment, and final production publication without manual owner participation as the normal route.</p>
+      <p><strong>Meaning boundary:</strong> generated pages are not official TeqFW, ADSM, or Alex Gusev editorial content.</p>
+    </div>
+  </section>
+
+  <section class="section mode-boundary-band">
+    <div class="section-head">
+      <p class="eyebrow">What this is not</p>
+      <h2>Demo Pages is not hosting, a CMS, or a publishing entitlement.</h2>
+    </div>
+    <div class="demo-boundary-list">
+      <p>It is not user hosting, a website builder, a community publishing area, or an arbitrary content submission mechanism.</p>
+      <p>Generated content stays inert: no user JavaScript, no user-authored styles, no images, no forms, and no embedded external resources.</p>
+      <p>The index page is owner-maintained, and generated agents do not edit it directly.</p>
+    </div>
+  </section>
+
+  <section class="section mode-proof-matrix">
+    <div class="section-head">
+      <p class="eyebrow">Generated demo artifacts</p>
+      <h2>Validated generated pages appear here when public workflow evidence exists.</h2>
+      <p>The listing is metadata-driven. Generated agents add validated demo metadata and generated templates instead of changing this index template.</p>
+    </div>
+    {% if demoPages.length %}
+      <div class="card-grid demo-pages-grid">
+        {% for item in demoPages %}
+          <article class="card status-card">
+            <p class="status-label">Validated demo artifact</p>
+            <h3><a href="{{ item.route }}">{{ item.title }}</a></h3>
+            <p>{{ item.description }}</p>
+            <div class="trajectory-list">
+              {% for link in item.trajectoryLinks %}
+                <a href="{{ link.href }}">{{ link.label }}</a>
+              {% endfor %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <article class="card status-card demo-empty-state">
+        <p class="status-label">Planned status</p>
+        <h3>No validated generated Demo Pages are published yet.</h3>
+        <p>The public route surface exists, but current public proof begins only when an actual constrained issue completes the full validated path to a published generated page.</p>
+      </article>
+    {% endif %}
+  </section>
+{% endblock %}

@@ -4,11 +4,14 @@ import test from "node:test";
 import RouteMap from "../../../src/Model/RouteMap.mjs";
 
 test("RouteMap resolves fixed routes and strips query and trailing slash", () => {
-  const routes = new RouteMap({siteMap: {getPages: () => [{route: "/"}, {route: "/method"}]}});
+  const routes = new RouteMap({siteMap: {getPages: () => [{route: "/"}, {route: "/method"}, {route: "/demo/pages/"}, {route: "/demo/pages/sample/"}]}});
 
   assert.equal(routes.resolve("/"), "/");
   assert.equal(routes.resolve("/method?ref=hero"), "/method");
   assert.equal(routes.resolve("/method/"), "/method");
+  assert.equal(routes.resolve("/demo/pages"), "/demo/pages/");
+  assert.equal(routes.resolve("/demo/pages/sample"), "/demo/pages/sample/");
+  assert.equal(routes.resolve("/demo/pages/../../etc/passwd/"), null);
   assert.equal(routes.resolve("/missing"), null);
 });
 

@@ -16,10 +16,12 @@ test("Config loads meta/site.json and exposes immutable metadata records", () =>
   assert.equal(config.getFooter().statement, "public proof product for controlled agent-driven JavaScript evolution");
   assert.deepEqual(config.getFooter().author, {label: "Alex Gusev", route: "/contacts"});
   assert.equal(config.getSite().footer.identity, "Tequila Framework & ADSM");
-  assert.deepEqual(pages.map((page) => page.route), ["/", "/method", "/ecosystem", "/ecosystem/philosophy", "/proof", "/contacts"]);
-  assert.deepEqual(config.getNavigation().primary, ["/method", "/ecosystem", "/proof", "/contacts"]);
+  assert.deepEqual(pages.map((page) => page.route), ["/", "/method", "/ecosystem", "/ecosystem/philosophy", "/proof", "/demo/pages/", "/contacts"]);
+  assert.deepEqual(config.getNavigation().primary, ["/method", "/ecosystem", "/proof", "/demo/pages/", "/contacts"]);
   assert.equal(pages[0].template, "page/index.html");
   assert.equal(pages[0].isNavigable, false);
+  assert.equal(pages[0].area, "home");
+  assert.equal(pages[0].isSitemap, true);
   assert.equal(Object.hasOwn(pages[0], "navLabel"), false);
   assert.equal(pages[0].hero.ctaHref, "http://fly.wiredgeese.com/flancer/leanpub/adsm-en/");
   assert.equal(pages[0].hero.cta, "Get the ADSM book");
@@ -29,6 +31,11 @@ test("Config loads meta/site.json and exposes immutable metadata records", () =>
   assert.equal(pages[3].hero.cta, "Open GitHub source");
   assert.equal(pages[3].hero.title, "TeqFW is a philosophy for JavaScript web applications built and evolved with LLM agents.");
   assert.equal(Object.hasOwn(pages[3], "navLabel"), false);
+  assert.equal(pages[5].route, "/demo/pages/");
+  assert.equal(pages[5].navLabel, "Demo");
+  assert.equal(pages[5].area, "demo");
+  assert.equal(pages[5].template, "page/demo/pages/index.html");
+  assert.equal(config.getDemoPagesMetaPath().endsWith("/meta/demo-pages.json"), true);
   assert.ok(config.getTemplateRoot().endsWith("/tmpl/"));
   assert.ok(config.getWebRoot().endsWith("/web/"));
   assert.throws(() => pages.push({}));

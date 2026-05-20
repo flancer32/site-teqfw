@@ -8,10 +8,11 @@ import Config from "../../../src/Config.mjs";
 import SiteMap from "../../../src/Model/SiteMap.mjs";
 
 test("SiteMap binds configured pages to existing templates", () => {
-  const siteMap = new SiteMap({config: new Config({fs, nodeUrl}), fs, path});
+  const siteMap = new SiteMap({config: new Config({fs, nodeUrl}), demoPages: {getPages: () => []}, fs, path});
 
-  assert.deepEqual(siteMap.getPages().map((page) => page.route), ["/", "/method", "/ecosystem", "/ecosystem/philosophy", "/proof", "/contacts"]);
+  assert.deepEqual(siteMap.getPages().map((page) => page.route), ["/", "/method", "/ecosystem", "/ecosystem/philosophy", "/proof", "/demo/pages/", "/contacts"]);
   assert.equal(siteMap.getByRoute("/contacts")?.template, "page/contacts.html");
+  assert.equal(siteMap.getByRoute("/demo/pages/")?.template, "page/demo/pages/index.html");
   assert.equal(siteMap.getByRoute("/ecosystem/philosophy")?.template, "page/ecosystem/philosophy.html");
   assert.equal(siteMap.getByRoute("/ecosystem/philosophy")?.isNavigable, false);
   assert.equal(siteMap.getByRoute("/philosophy"), null);

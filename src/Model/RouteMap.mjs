@@ -7,7 +7,7 @@
 
 export default class TeqFw_Site_Model_RouteMap {
   constructor({siteMap}) {
-    const routes = new Set(siteMap.getPages().map((page) => page.route));
+    const routes = new Map(siteMap.getPages().map((page) => [normalizePath(page.route), page.route]));
     const redirects = new Map([
       ["/access", "/contacts"],
       ["/philosophy", "/ecosystem/philosophy"],
@@ -15,7 +15,7 @@ export default class TeqFw_Site_Model_RouteMap {
 
     this.resolve = (url) => {
       const pathname = normalizePath(url);
-      return routes.has(pathname) ? pathname : null;
+      return routes.get(pathname) ?? null;
     };
 
     this.resolveRedirect = (url) => redirects.get(normalizePath(url)) ?? null;

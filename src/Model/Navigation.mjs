@@ -7,14 +7,18 @@
 
 export default class TeqFw_Site_Model_Navigation {
   constructor({config, siteMap}) {
-    this.getItems = (currentRoute) => Object.freeze(config.getNavigation().primary
-      .map((route) => siteMap.getByRoute(route))
-      .filter((page) => page?.isNavigable)
-      .map((page) => Object.freeze({
-        href: page.route,
-        isCurrent: page.route === currentRoute,
-        label: page.navLabel,
-      })));
+    this.getItems = (currentRoute) => {
+      const currentPage = siteMap.getByRoute(currentRoute);
+      const currentArea = currentPage?.area ?? null;
+      return Object.freeze(config.getNavigation().primary
+        .map((route) => siteMap.getByRoute(route))
+        .filter((page) => page?.isNavigable)
+        .map((page) => Object.freeze({
+          href: page.route,
+          isCurrent: page.route === currentRoute || (currentArea !== null && page.area === currentArea),
+          label: page.navLabel,
+        })));
+    };
   }
 }
 

@@ -14,11 +14,13 @@ export default class TeqFw_Site_Config {
   constructor({fs, nodeUrl}) {
     const {fileURLToPath} = nodeUrl;
     const metaPath = fileURLToPath(new URL("../meta/site.json", import.meta.url));
+    const demoPagesMetaPath = fileURLToPath(new URL("../meta/demo-pages.json", import.meta.url));
     const templateRoot = fileURLToPath(new URL("../tmpl/", import.meta.url));
     const webRoot = fileURLToPath(new URL("../web/", import.meta.url));
     const metadata = normalizeMetadata(JSON.parse(fs.readFileSync(metaPath, "utf8")));
 
     this.getBrand = () => metadata.brand;
+    this.getDemoPagesMetaPath = () => demoPagesMetaPath;
     this.getFooter = () => metadata.footer;
     this.getNavigation = () => metadata.navigation;
     this.getPages = () => metadata.pages;
@@ -54,6 +56,9 @@ function normalizePages(value) {
     const record = normalizeFields(page, path, ["id", "intro", "isNavigable", "route", "summary", "template", "title"]);
     assertRecord(page.hero, `${path}.hero`);
     record.hero = normalizeFields(page.hero, `${path}.hero`, ["cta", "ctaHref", "kicker", "title"]);
+    record.area = normalizeArea(page.area ?? deriveAreaFromRoute(record.route), `${path}.area`);
+    record.isDemoGenerated = false;
+    record.isSitemap = normalizeBoolean(page.isSitemap, `${path}.isSitemap`);
     if (typeof record.isNavigable !== "boolean") throw new Error(`${path}.isNavigable must be a boolean`);
     assertRoute(record.route, `${path}.route`);
     if (routes.has(record.route)) throw new Error(`${path}.route duplicates ${record.route}`);
@@ -90,6 +95,23 @@ function normalizeNavigation(value, pages) {
   });
   if (new Set(primary).size !== primary.length) throw new Error("navigation.primary must not contain duplicate routes");
   return {primary};
+}
+
+function deriveAreaFromRoute(route) {
+  if (route === "/") return "home";
+  if (route.startsWith("/demo/pages")) return "demo";
+  const segments = route.split("/").filter(Boolean);
+  return segments[0] ?? "home";
+}
+
+function normalizeArea(value, path) {
+  assertString(value, path);
+  return value.trim();
+}
+
+function normalizeBoolean(value, path) {
+  if (typeof value !== "boolean") throw new Error(`${path} must be a boolean`);
+  return value;
 }
 
 function normalizeFields(value, path, fields) {

@@ -47,9 +47,10 @@ test("Renderer renders semantic content through Nunjucks templates", async () =>
       {href: "/method", isCurrent: false, label: "Method"},
       {href: "/ecosystem", isCurrent: false, label: "Ecosystem"},
       {href: "/proof", isCurrent: false, label: "Proof"},
+      {href: "/demo/pages/", isCurrent: false, label: "Demo"},
       {href: "/contacts", isCurrent: false, label: "Contacts"},
     ]},
-    pages: {getByRoute: () => page},
+    pages: {getByRoute: () => page, getGeneratedDemoPages: () => []},
   });
 
   const html = await renderer.render("/");
@@ -82,6 +83,8 @@ test("Renderer renders semantic content through Nunjucks templates", async () =>
   assert.match(html, /<details class="site-nav site-nav--mobile">/);
   assert.match(html, /<summary class="nav-toggle" aria-label="Open primary navigation">/);
   assert.match(html, /href="\/method"/);
+  assert.match(html, /href="\/demo\/pages\/"/);
+  assert.match(html, />Demo</);
   assert.doesNotMatch(html, />Overview</);
   assert.match(html, /<strong>Tequila Framework &amp; ADSM<\/strong>/);
   assert.match(html, /public proof product for controlled agent-driven JavaScript evolution by <a href="\/contacts">Alex Gusev<\/a>\./);
@@ -134,7 +137,7 @@ test("Renderer renders ecosystem philosophy with site canonical and source docum
       getTemplateRoot: () => fileURLToPath(new URL("../../../tmpl/", import.meta.url)),
     },
     navigation: {getItems: () => []},
-    pages: {getByRoute: () => page},
+    pages: {getByRoute: () => page, getGeneratedDemoPages: () => []},
   });
 
   const html = await renderer.render("/ecosystem/philosophy");

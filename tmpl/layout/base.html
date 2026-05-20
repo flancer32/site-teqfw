@@ -14,6 +14,21 @@
     <main id="content">
       {% block page_entry %}{% endblock %}
       {% block content %}{% endblock %}
+      {% if page.isDemoGenerated %}
+      <section class="section mode-boundary-band demo-generated-shell">
+        <div class="section-head">
+          <p class="eyebrow">Demo artifact boundary</p>
+          <h2>This page is a bounded generated workflow artifact.</h2>
+        </div>
+        <p>It was generated from constrained third-party GitHub Issue input inside the Demo Pages workflow. It is not official TeqFW, ADSM, or Alex Gusev editorial content.</p>
+        <div class="trajectory-list">
+          <a href="/demo/pages/">Back to Demo Pages index</a>
+          {% for link in page.trajectoryLinks %}
+            <a href="{{ link.href }}">{{ link.label }}</a>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
     </main>
     {% include "partials/site-footer.html" %}
   </body>

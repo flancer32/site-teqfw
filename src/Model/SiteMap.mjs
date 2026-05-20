@@ -6,11 +6,13 @@
  */
 
 export default class TeqFw_Site_Model_SiteMap {
-  constructor({config, fs, path}) {
+  constructor({config, demoPages, fs, path}) {
     const templateRoot = path.join(config.getTemplateRoot(), "page");
     const templates = discoverTemplates(templateRoot, fs, path);
-    const pages = deepFreeze(config.getPages()
-      .filter((page) => templates.has(page.template)));
+    const pages = deepFreeze([
+      ...config.getPages().filter((page) => templates.has(page.template)),
+      ...demoPages.getPages(),
+    ]);
     const byRoute = new Map(pages.map((page) => [page.route, page]));
 
     this.getByRoute = (route) => byRoute.get(route) ?? null;
@@ -46,6 +48,7 @@ function deepFreeze(value) {
 
 export const __deps__ = Object.freeze({
   config: "TeqFw_Site_Config$",
+  demoPages: "TeqFw_Site_Model_DemoPages$",
   fs: "node:fs",
   path: "node:path",
 });

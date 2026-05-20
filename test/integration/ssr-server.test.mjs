@@ -64,6 +64,18 @@ test("serves SSR pages, static files, and 404 for unknown routes", async () => {
     assert.doesNotMatch(proofText, /What this page does not ask you to believe\./);
     assert.doesNotMatch(proofText, /layout-proof/);
 
+    const demo = await fetch(`${baseUrl}/demo/pages/`);
+    assert.equal(demo.status, 200);
+    const demoText = await demo.text();
+    assert.match(demoText, /Watch a constrained GitHub Issue move toward a bounded production page\./);
+    assert.match(demoText, /The public input is a constrained GitHub Issue, not arbitrary publishing\./);
+    assert.match(demoText, /Only machine-validated generated changes may continue toward publication\./);
+    assert.match(demoText, /Demo Pages is not hosting, a CMS, or a publishing entitlement\./);
+    assert.match(demoText, /No validated generated Demo Pages are published yet\./);
+    assert.match(demoText, /href="\/demo\/pages\/"/);
+    assert.match(demoText, /Method[\s\S]*Ecosystem[\s\S]*Proof[\s\S]*Demo[\s\S]*Contacts/);
+    assert.match(demoText, /not official TeqFW, ADSM, or Alex Gusev editorial content\./);
+
     const philosophy = await fetch(`${baseUrl}/ecosystem/philosophy`);
     assert.equal(philosophy.status, 200);
     const philosophyText = await philosophy.text();
