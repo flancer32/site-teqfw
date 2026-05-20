@@ -1,0 +1,58 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">James Bond in official films</p>
+      <h2>All the actors who played Bond, with the official films attached to each era.</h2>
+    </div>
+    <div>
+      <p>This generated page is a compact static reference. It stays inert, bounded, and local to the Demo Pages surface.</p>
+      <p>The list covers the six actors who portrayed James Bond in the official Eon-produced film series and names the films associated with each portrayal.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <p class="eyebrow">Actors and films</p>
+      <h2>The official Bond series, grouped by performer</h2>
+    </div>
+    <div class="card-grid demo-pages-grid">
+      <article class="card status-card">
+        <h3>Sean Connery</h3>
+        <p><strong>Films:</strong> Dr. No, From Russia with Love, Goldfinger, Thunderball, You Only Live Twice, Diamonds Are Forever.</p>
+      </article>
+      <article class="card status-card">
+        <h3>George Lazenby</h3>
+        <p><strong>Film:</strong> On Her Majesty's Secret Service.</p>
+      </article>
+      <article class="card status-card">
+        <h3>Roger Moore</h3>
+        <p><strong>Films:</strong> Live and Let Die, The Man with the Golden Gun, The Spy Who Loved Me, Moonraker, For Your Eyes Only, Octopussy, A View to a Kill.</p>
+      </article>
+      <article class="card status-card">
+        <h3>Timothy Dalton</h3>
+        <p><strong>Films:</strong> The Living Daylights, Licence to Kill.</p>
+      </article>
+      <article class="card status-card">
+        <h3>Pierce Brosnan</h3>
+        <p><strong>Films:</strong> GoldenEye, Tomorrow Never Dies, The World Is Not Enough, Die Another Day.</p>
+      </article>
+      <article class="card status-card">
+        <h3>Daniel Craig</h3>
+        <p><strong>Films:</strong> Casino Royale, Quantum of Solace, Skyfall, Spectre, No Time to Die.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section mode-boundary-band">
+    <div class="section-head">
+      <p class="eyebrow">Boundary note</p>
+      <h2>This page demonstrates the workflow without adding interactive behavior.</h2>
+    </div>
+    <div class="demo-boundary-list">
+      <p>It uses only local static markup and the site layout already present in the repository.</p>
+      <p>It intentionally avoids scripts, forms, remote resources, and any product or workflow changes outside the generated page boundary.</p>
+    </div>
+  </section>
+{% endblock %}

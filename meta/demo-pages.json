@@ -14,6 +14,21 @@
       "trajectory": {
         "issueUrl": "https://github.com/flancer32/site-teqfw/issues/70"
       }
+    },
+    {
+      "area": "demo",
+      "demo": true,
+      "description": "A bounded generated page listing the official James Bond actors and the films associated with each era.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/james-bond-actors/",
+      "slug": "james-bond-actors",
+      "template": "page/demo/pages/james-bond-actors/index.html",
+      "title": "James Bond Actors",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/75"
+      }
     }
   ]
 }
