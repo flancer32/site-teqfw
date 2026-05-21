@@ -29,6 +29,21 @@
       "trajectory": {
         "issueUrl": "https://github.com/flancer32/site-teqfw/issues/70"
       }
+    },
+    {
+      "area": "demo",
+      "demo": true,
+      "description": "A bounded generated bilingual food guide for twenty traditional Polish dishes with short Russian descriptions and local static visual treatment.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/polskie-dania-krakow/",
+      "slug": "polskie-dania-krakow",
+      "template": "page/demo/pages/polskie-dania-krakow/index.html",
+      "title": "Polish Dishes in Krakow",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/80"
+      }
     }
   ]
 }
