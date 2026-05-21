@@ -50,7 +50,7 @@ test("valid generated demo pages resolve through the normal SSR composition and 
     assert.equal(routes.resolve("/demo/pages/../../etc/passwd/"), null);
 
     const indexHtml = await renderer.render("/demo/pages/");
-    assert.match(indexHtml, /No validated generated Demo Pages are published yet|Hello world/);
+    assert.match(indexHtml, /No public processed-signal artifacts are listed yet|Hello world/);
     assert.match(indexHtml, /Hello world/);
     assert.match(indexHtml, /metadata-driven/);
     assert.match(indexHtml, /href="\/demo\/pages\/hello-world\/"/);
@@ -61,7 +61,7 @@ test("valid generated demo pages resolve through the normal SSR composition and 
 
     const generatedHtml = await renderer.render("/demo/pages/hello-world/");
     assert.match(generatedHtml, /Generated body/);
-    assert.match(generatedHtml, /bounded generated workflow artifact/);
+    assert.match(generatedHtml, /bounded artifact of a processed development signal/);
     assert.match(generatedHtml, /Back to Demo Pages index/);
     assert.match(generatedHtml, /not official TeqFW, ADSM, or Alex Gusev editorial content/);
 

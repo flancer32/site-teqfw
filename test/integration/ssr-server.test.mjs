@@ -67,19 +67,19 @@ test("serves SSR pages, static files, and 404 for unknown routes", async () => {
     const demo = await fetch(`${baseUrl}/demo/pages/`);
     assert.equal(demo.status, 200);
     const demoText = await demo.text();
-    assert.match(demoText, /Watch a constrained GitHub Issue move toward a bounded production page\./);
-    assert.match(demoText, /The public input is a constrained GitHub Issue, not arbitrary publishing\./);
-    assert.match(demoText, /Only machine-validated generated changes may continue toward publication\./);
-    assert.match(demoText, /Demo Pages is not hosting, a CMS, or a publishing entitlement\./);
+    assert.match(demoText, /Inspect a small public model of issue-driven software evolution\./);
+    assert.match(demoText, /A GitHub Issue is treated here as a development signal, not as a publishing request\./);
+    assert.match(demoText, /The published page is evidence that a signal completed a controlled trajectory\./);
+    assert.match(demoText, /Demo Pages is a workflow-proof surface, not a publishing right\./);
     assert.match(demoText, /href="\/demo\/pages\/"/);
     assert.match(demoText, /Method[\s\S]*Ecosystem[\s\S]*Proof[\s\S]*Demo[\s\S]*Contacts/);
     assert.match(demoText, /not official TeqFW, ADSM, or Alex Gusev editorial content\./);
-    assert.match(demoText, /Generated demo artifacts/);
-    assert.match(demoText, /Validated generated pages appear here when public workflow evidence exists\./);
-    if (/No validated generated Demo Pages are published yet\./.test(demoText)) {
-      assert.match(demoText, /current public proof begins only when an actual constrained issue completes the full validated path to a published generated page\./);
+    assert.match(demoText, /Public evidence/);
+    assert.match(demoText, /Current demo artifacts expose the smallest public proof of issue-driven product evolution\./);
+    if (/No public processed-signal artifacts are listed yet\./.test(demoText)) {
+      assert.match(demoText, /the strongest public proof begins only when a constrained issue completes the visible trajectory to a published page artifact\./);
     } else {
-      assert.match(demoText, /Validated demo artifact/);
+      assert.match(demoText, /Processed signal artifact/);
       assert.match(demoText, /href="\/demo\/pages\/[a-z0-9-]+\/"/);
       assert.match(demoText, /Published page/);
     }

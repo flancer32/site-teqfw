@@ -118,21 +118,21 @@
     },
     {
       "hero": {
-        "cta": "Inspect proof",
-        "ctaHref": "/proof",
-        "secondaryCta": "Understand ADSM",
-        "secondaryCtaHref": "/method",
+        "cta": "Open issue entry",
+        "ctaHref": "https://github.com/flancer32/site-teqfw/issues",
+        "secondaryCta": "Read the concept",
+        "secondaryCtaHref": "https://wiredgeese.com/en/library/concepts/20260519-controlled-product-evolution.html",
         "kicker": "Workflow demonstration",
-        "title": "Watch a constrained GitHub Issue move toward a bounded production page."
+        "title": "Inspect a small public model of issue-driven software evolution."
       },
       "id": "demo-pages",
-      "intro": "Demo Pages is a controlled workflow surface. A constrained GitHub Issue is the public input, GitHub Flows and restricted agent execution prepare the change, and only machine-validated results may continue through pull request, merge, deployment, and final production publication.",
+      "intro": "Demo Pages shows how a GitHub Issue can enter the system as a development signal, move through GitHub Flows and restricted agent execution, and become a bounded, validated, inspectable production artifact under ADSM control.",
       "isSitemap": true,
       "isNavigable": true,
       "navLabel": "Demo",
       "route": "/demo/pages/",
       "area": "demo",
-      "summary": "Owner-maintained Demo Pages index explaining the bounded public workflow and listing validated generated demo artifacts when they exist.",
+      "summary": "Owner-maintained Demo Pages index explaining issue-driven software evolution and listing current processed-signal demo artifacts with workflow evidence when available.",
       "template": "page/demo/pages/index.html",
       "title": "Demo Pages"
     },
