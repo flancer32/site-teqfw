@@ -1,54 +1,82 @@
 {% extends "layout/content.html" %}
 
+{% block page_entry %}
+  <header class="page-entry hero mode-readable-stack">
+    <div class="hero__copy">
+      <p class="eyebrow">Distributed Agent-Driven Evolution</p>
+      <h1>Demo Pages is a public testing ground for controlled product evolution.</h1>
+      <p class="lede">Inspect a small public model of issue-driven software evolution. Modern software evolves through networks of packages, modules, applications, product areas, human teams, agent teams, and workflows. This section shows a small public working model of that idea: a constrained GitHub Issue can act as a development signal, move through restricted agent execution, validation, and deployment, and become a bounded static page under normal repository control.</p>
+      <p class="actions">
+        <a class="button" href="https://github.com/flancer32/site-teqfw/issues">Open a GitHub issue</a>
+        <a class="button button-secondary" href="https://github.com/flancer32/github-flows-app">Inspect GitHub Flows App</a>
+        <a class="button button-secondary" href="https://wiredgeese.com/en/library/concepts/20260519-controlled-product-evolution.html">Read the workflow concept</a>
+      </p>
+    </div>
+  </header>
+{% endblock %}
+
 {% block content %}
-  {{ super() }}
+  <section class="section mode-card-grid">
+    <div class="section-head">
+      <p class="eyebrow">Why This Exists</p>
+      <h2>This page demonstrates a working mechanism, not a page-generation trick.</h2>
+      <p>Software products need channels for feedback, defects, boundary-crossing requests, and feature signals. GitHub Issues are one practical form of that channel. A GitHub Issue is treated here as a development signal, not as a publishing request. Demo Pages shows what happens when such a signal is processed through a controlled repository workflow instead of through arbitrary publishing.</p>
+    </div>
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Development Signal</p>
+        <h3>A GitHub Issue becomes the public entry point.</h3>
+        <p>A visitor can open a constrained issue in the site repository. The issue is treated as a bounded development signal, not as a direct publishing entitlement.</p>
+      </article>
+      <article class="card status-card">
+        <p class="status-label">Controlled Processing</p>
+        <h3>Agents work inside documented boundaries.</h3>
+        <p>ADSM provides the context and control model. GitHub Flows orchestrates agent work from GitHub events, containers provide the bounded execution layer, and GitHub Flows App provides the host application wrapper behind this public workflow surface.</p>
+      </article>
+      <article class="card status-card">
+        <p class="status-label">Public Evidence</p>
+        <h3>The resulting page is proof, not the product goal.</h3>
+        <p>If the request survives validation and merge, the generated page appears here as evidence that an external signal moved through a controlled trajectory and became a bounded production artifact.</p>
+      </article>
+    </div>
+  </section>
+
   <section class="section split mode-readable-stack">
     <div>
-      <p class="eyebrow">Public input boundary</p>
-      <h2>The public input is a constrained GitHub Issue, not arbitrary publishing.</h2>
+      <p class="eyebrow">How The Stack Connects</p>
+      <h2>This section joins method, orchestration, containers, validation, and deployment into one inspectable surface.</h2>
     </div>
     <div>
-      <p>Demo Pages exists to show a bounded workflow surface. A visitor can submit only a constrained GitHub Issue, and the request is processed through GitHub Flows with restricted agent execution rather than through a public editor, CMS, website builder, or user-hosting surface.</p>
-      <p>The goal is workflow visibility: public intent enters through the issue, and the resulting page remains a subordinate demonstration artifact listed from validated workflow metadata.</p>
+      <p><a href="/method/">ADSM</a> is the project-organization method that makes agent work practical through maintained context, constraints, validation, and controlled structure.</p>
+      <p>GitHub Flows is Alex Gusev&apos;s orchestration application that connects agent execution to GitHub Issues through webhooks. <a href="https://github.com/flancer32/github-flows-app">GitHub Flows App</a> is the public inspectable host application wrapper behind this demonstration surface.</p>
+      <p>The point is not to hide the engine and ask for trust. The point is to let visitors inspect the host repository, the workflow surface, and the resulting artifacts in public.</p>
     </div>
   </section>
 
   <section class="section split mode-status-separated-group">
     <div>
-      <p class="eyebrow">Validation boundary</p>
-      <h2>Only machine-validated generated changes may continue toward publication.</h2>
+      <p class="eyebrow">Visible Trajectory</p>
+      <h2>Demo Pages shows the smallest public working route from signal to artifact.</h2>
     </div>
     <div class="status-list">
-      <p><strong>Restricted execution:</strong> GitHub Flows and a bounded agent profile prepare the change inside the normal SSR and Nunjucks site pipeline.</p>
-      <p><strong>Required gate:</strong> invalid generated metadata or generated templates stop the path before publication.</p>
-      <p><strong>Normal successful path:</strong> validated changes proceed through pull request, merge, GitHub Action deployment, and final production publication without manual owner participation as the normal route.</p>
-      <p><strong>Meaning boundary:</strong> generated pages are not official TeqFW, ADSM, or Alex Gusev editorial content.</p>
-    </div>
-  </section>
-
-  <section class="section mode-boundary-band">
-    <div class="section-head">
-      <p class="eyebrow">What this is not</p>
-      <h2>Demo Pages is not hosting, a CMS, or a publishing entitlement.</h2>
-    </div>
-    <div class="demo-boundary-list">
-      <p>It is not user hosting, a website builder, a community publishing area, or an arbitrary content submission mechanism.</p>
-      <p>Generated content stays inert: no user JavaScript, no user-authored styles, no images, no forms, and no embedded external resources.</p>
-      <p>The index page is owner-maintained, and generated agents do not edit it directly.</p>
+      <p><strong>Signal entry:</strong> tracking systems like GitHub Issues provide coordination channels between product nodes, users, and adjacent teams.</p>
+      <p><strong>Processing route:</strong> external issue -&gt; restricted agent execution -&gt; validation -&gt; pull request -&gt; merge -&gt; deployment -&gt; published static page.</p>
+      <p><strong>Proof value:</strong> the generated page matters as evidence that the workflow produced a bounded artifact under repository control. The published page is evidence that a signal completed a controlled trajectory.</p>
+      <p><strong>Inspectability:</strong> where evidence exists, visitors should be able to inspect the issue, workflow links, merge trail, deployment action, and final published result.</p>
     </div>
   </section>
 
   <section class="section mode-proof-matrix">
     <div class="section-head">
-      <p class="eyebrow">Generated demo artifacts</p>
-      <h2>Validated generated pages appear here when public workflow evidence exists.</h2>
-      <p>The listing is metadata-driven. Generated agents add validated demo metadata and generated templates instead of changing this index template.</p>
+      <p class="eyebrow">Public evidence</p>
+      <h2>Published demo pages are listed as processed development signals.</h2>
+      <p>Current demo artifacts expose the smallest public proof of issue-driven product evolution. This listing is metadata-driven. Agents may add validated generated artifacts and their trajectory links, but they must not rewrite this owner-maintained explanation page directly.</p>
     </div>
     {% if demoPages.length %}
       <div class="card-grid demo-pages-grid">
         {% for item in demoPages %}
           <article class="card status-card">
-            <p class="status-label">Validated demo artifact</p>
+            <p class="status-label">Processed signal artifact</p>
             <h3><a href="{{ item.route }}">{{ item.title }}</a></h3>
             <p>{{ item.description }}</p>
             <div class="trajectory-list">
@@ -61,10 +89,34 @@
       </div>
     {% else %}
       <article class="card status-card demo-empty-state">
-        <p class="status-label">Planned status</p>
-        <h3>No validated generated Demo Pages are published yet.</h3>
-        <p>The public route surface exists, but current public proof begins only when an actual constrained issue completes the full validated path to a published generated page.</p>
+        <p class="status-label">Proof status</p>
+        <h3>No public processed-signal artifacts are listed yet.</h3>
+        <p>The strongest public proof begins only when a constrained issue completes the visible trajectory to a published page artifact.</p>
       </article>
     {% endif %}
+  </section>
+
+  <section class="section split mode-status-separated-group">
+    <div>
+      <p class="eyebrow">Participation Boundary</p>
+      <h2>This is a controlled experiment, not a public publishing feature.</h2>
+    </div>
+    <div class="status-list">
+      <p><strong>Allowed meaning:</strong> visitors may submit a constrained issue and let agents attempt to produce a bounded static page. Demo Pages is a workflow-proof surface, not a publishing right.</p>
+      <p><strong>Not allowed:</strong> this section is not a CMS, not hosting, not a website builder, and not a generic user-submission area.</p>
+      <p><strong>Content restrictions:</strong> generated pages remain inert with no user JavaScript, no user-authored styles, no images, no forms, and no embedded external resources.</p>
+      <p><strong>Preservation rule:</strong> publication is not guaranteed, generated pages are temporary demonstration artifacts, and they may be removed at any time. Generated pages are not official TeqFW, ADSM, or Alex Gusev editorial content.</p>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Next Step</p>
+      <h2>Inspect the mechanism, then decide whether to test it or adopt the pattern.</h2>
+    </div>
+    <div>
+      <p>You can inspect the public issue entry point, review generated artifacts here, study the host application in <a href="https://github.com/flancer32/github-flows-app">GitHub Flows App</a>, and read the broader conceptual framing in the <a href="https://wiredgeese.com/en/library/concepts/20260519-controlled-product-evolution.html">controlled product evolution note</a>.</p>
+      <p>If you want the workflow evidence, continue to <a href="/proof">Proof</a>. If you want the wider product stack around this mechanism, continue to <a href="/ecosystem">Ecosystem</a>. If you want the underlying method context first, continue to <a href="/method/">ADSM</a>. If you want to discuss applying this kind of bounded workflow to your own product or repository, continue to <a href="/contacts/">Contacts</a>.</p>
+    </div>
   </section>
 {% endblock %}
