@@ -3,6 +3,21 @@
     {
       "area": "demo",
       "demo": true,
+      "description": "A bounded generated page that explains Habr as a technology and IT community platform.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/habr/",
+      "slug": "habr",
+      "template": "page/demo/pages/habr/index.html",
+      "title": "Habr",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/84"
+      }
+    },
+    {
+      "area": "demo",
+      "demo": true,
       "description": "A bounded generated page listing the official James Bond actors and the official films they appear in.",
       "generated": true,
       "isNavigable": false,
