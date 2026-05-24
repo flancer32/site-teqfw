@@ -1,3 +1,19 @@
 {
-  "pages": []
+  "pages": [
+    {
+      "area": "demo",
+      "demo": true,
+      "description": "A bounded static page explaining late binding in JavaScript with reader-facing examples presented as inert text.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/late-binding-in-javascript/",
+      "slug": "late-binding-in-javascript",
+      "template": "page/demo/pages/late-binding-in-javascript/index.html",
+      "title": "Late Binding in JavaScript",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/86"
+      }
+    }
+  ]
 }
