@@ -44,6 +44,21 @@
       "trajectory": {
         "issueUrl": "https://github.com/flancer32/site-teqfw/issues/86"
       }
+    },
+    {
+      "area": "demo",
+      "demo": true,
+      "description": "A bounded inert demo page that explains why required elements are missing and keeps the result concise and inspectable.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/required-elements-are-missing/",
+      "slug": "required-elements-are-missing",
+      "template": "page/demo/pages/required-elements-are-missing/index.html",
+      "title": "Required Elements Are Missing",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/102"
+      }
     }
   ]
 }
