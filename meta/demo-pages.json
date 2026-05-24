@@ -3,6 +3,21 @@
     {
       "area": "demo",
       "demo": true,
+      "description": "A bounded static page describing the revised demo-page wording that normalizes the Bdsm spelling.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/bdsm-copy-update/",
+      "slug": "bdsm-copy-update",
+      "template": "page/demo/pages/bdsm-copy-update/index.html",
+      "title": "Bdsm Copy Update",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/90"
+      }
+    },
+    {
+      "area": "demo",
+      "demo": true,
       "description": "A bounded static page explaining late binding in JavaScript with reader-facing examples presented as inert text.",
       "generated": true,
       "isNavigable": false,

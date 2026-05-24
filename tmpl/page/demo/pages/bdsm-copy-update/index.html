@@ -1,0 +1,44 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">Demo Page Artifact</p>
+      <h1>Bdsm Copy Update</h1>
+      <p>This bounded demo page documents the revised wording for the demo-page copy. The page keeps the updated spelling normalized as Bdsm and presents that copy change as inert text only.</p>
+    </div>
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Copy state</p>
+        <h2>Revised wording is the point of the page.</h2>
+        <p>The page exists to show the updated demo-page wording without adding interactive behavior, remote resources, or executable content.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Normalization</p>
+        <h2>Bdsm is the normalized spelling used here.</h2>
+        <p>The visible text keeps the revised spelling consistent throughout the page so the copy change is easy to inspect.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Boundary</p>
+        <h2>This remains a bounded demo artifact.</h2>
+        <p>The page stays inside the Demo Pages file boundary and remains static, inert, and self-contained.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Summary</p>
+      <h2>The artifact records a narrow copy update and nothing more.</h2>
+    </div>
+    <div>
+      <p>The page keeps the revised wording visible, concise, and easy to audit. It does not introduce forms, scripts, embeds, or other active content.</p>
+      <p><a href="/demo/pages/">Back to Demo Pages</a></p>
+    </div>
+  </section>
+{% endblock %}
