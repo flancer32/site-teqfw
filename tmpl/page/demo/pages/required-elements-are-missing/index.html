@@ -1,0 +1,56 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">Demo Page Artifact</p>
+      <h1>Required Elements Are Missing</h1>
+      <p>This bounded demo page presents a compact inert example of a request where required elements are missing. It keeps the outcome readable, local, and free of active behavior.</p>
+    </div>
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Observed state</p>
+        <h2>The page records that key elements are absent.</h2>
+        <p>The content stays descriptive and does not try to repair, execute, or fetch anything.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Bounded scope</p>
+        <h2>The artifact remains inside the Demo Pages boundary.</h2>
+        <p>Only local markup and the required metadata entry are used for publication.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Safety</p>
+        <h2>No active content is introduced.</h2>
+        <p>The page avoids scripts, forms, embeds, redirects, remote assets, and other executable mechanisms.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Checklist</p>
+      <h2>What is intentionally not present is part of the message.</h2>
+    </div>
+    <div class="status-list">
+      <p><strong>Missing interaction:</strong> there are no inputs, submissions, or event handlers.</p>
+      <p><strong>Missing dependencies:</strong> there are no remote scripts, fonts, images, or media.</p>
+      <p><strong>Missing execution paths:</strong> there is no JavaScript, dynamic import, WebSocket, or shell content.</p>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Summary</p>
+      <h2>The result is narrow on purpose.</h2>
+    </div>
+    <div>
+      <p>The page exists as a stable inspection artifact and stops at the smallest useful explanation of the missing elements.</p>
+      <p><a href="/demo/pages/">Back to Demo Pages</a></p>
+    </div>
+  </section>
+{% endblock %}
