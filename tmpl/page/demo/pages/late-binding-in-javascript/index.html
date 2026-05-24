@@ -1,0 +1,69 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">JavaScript Concept</p>
+      <h1>Late Binding in JavaScript</h1>
+      <p>Late binding means a value is resolved when it is used, not only when code is written. In JavaScript this often shows up with functions, object properties, closures, and method calls where the final result depends on the current receiver, current scope, or current value at the moment of evaluation.</p>
+    </div>
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Core idea</p>
+        <h2>Names can point somewhere different later.</h2>
+        <p>A variable name, object reference, or method lookup can be evaluated after the surrounding code was created. That timing matters because the value may change between definition and use.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Common shape</p>
+        <h2>Closures remember bindings, not frozen outcomes.</h2>
+        <p>A closure keeps access to variables from its outer scope. If the underlying variable changes before the closure runs, the closure sees the current value at use time.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Method lookup</p>
+        <h2>Property access happens when the call happens.</h2>
+        <p>When JavaScript reads a property or method from an object, the final target depends on the object and the access pattern at the moment of the call.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Simple examples</p>
+      <h2>These examples are presented as text only.</h2>
+    </div>
+    <div>
+      <p><strong>Variable read:</strong> if a value changes after a function is created but before it runs, the function can observe the updated value.</p>
+      <p><strong>Loop capture:</strong> if several callbacks capture the same loop variable, each callback may resolve that variable when it finally runs, not when it was created.</p>
+      <p><strong>Object method:</strong> if a method is called through a different object reference, the lookup context changes and the result can differ.</p>
+      <pre><code>let label = "first";
+const read = () =&gt; label;
+label = "second";
+// read() resolves label at call time and returns "second"</code></pre>
+    </div>
+  </section>
+
+  <section class="section split mode-status-separated-group">
+    <div>
+      <p class="eyebrow">Why it matters</p>
+      <h2>Late binding explains many surprises in real JavaScript code.</h2>
+    </div>
+    <div class="status-list">
+      <p>It affects event handlers, closures, asynchronous callbacks, method extraction, and code that depends on mutable state.</p>
+      <p>It also helps explain why refactors can change behavior even when a function body looks unchanged.</p>
+      <p>Understanding when a value is resolved makes debugging easier and reduces accidental reliance on stale assumptions.</p>
+    </div>
+  </section>
+
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">Takeaway</p>
+      <h2>Think about when a binding is resolved, not only what is written.</h2>
+      <p>Late binding is not a special feature in isolation. It is part of how JavaScript evaluates names, scopes, receivers, and closures over time.</p>
+    </div>
+  </section>
+{% endblock %}
