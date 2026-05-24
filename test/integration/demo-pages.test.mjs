@@ -73,6 +73,30 @@ test("valid generated demo pages resolve through the normal SSR composition and 
   }
 });
 
+test("Demo Pages index renders its empty state when no generated pages exist", async () => {
+  const root = await createFixtureRoot({
+    pages: [],
+    template: '{% extends "layout/content.html" %}\n{% block content %}\n<section class="section"><p>Generated body</p></section>\n{% endblock %}\n',
+  });
+
+  try {
+    const config = createConfig(root);
+    const demoPages = new DemoPages({config, fs, path});
+    const siteMap = new SiteMap({config, demoPages, fs, path});
+    const pages = new Page({demoPages, siteMap});
+    const navigation = new Navigation({config, siteMap});
+    const renderer = new Renderer({config, navigation, pages});
+
+    const indexHtml = await renderer.render("/demo/pages/");
+    assert.match(indexHtml, /No public processed-signal artifacts are listed yet\./);
+    assert.match(indexHtml, /The strongest public proof begins only when a constrained issue completes the visible trajectory to a published page artifact\./);
+    assert.doesNotMatch(indexHtml, /Processed signal artifact/);
+    assert.doesNotMatch(indexHtml, /href="\/demo\/pages\/[a-z0-9-]+\/"/);
+  } finally {
+    await fsPromises.rm(root, {recursive: true, force: true});
+  }
+});
+
 test("invalid generated demo metadata and template content fail during composed loading", async () => {
   const badMetaRoot = await createFixtureRoot({
     pages: [{
