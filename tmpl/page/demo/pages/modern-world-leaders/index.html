@@ -1,0 +1,56 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">Demo Page Artifact</p>
+      <h1>Modern World Leaders</h1>
+      <p>This bounded demo page presents concise, inert profiles of contemporary world leaders in a retro-inspired editorial style. It is built for inspection, not interaction.</p>
+    </div>
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Profile shape</p>
+        <h2>Each profile stays short and readable.</h2>
+        <p>The page uses brief descriptive copy so the reader can scan the leaders quickly without any active behavior or remote dependencies.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Editorial tone</p>
+        <h2>Retro layout, modern subject matter.</h2>
+        <p>The composition leans on classic editorial structure with clear headings, compact blocks, and a visual rhythm that feels deliberate rather than generic.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Boundary</p>
+        <h2>This remains static and inert.</h2>
+        <p>The artifact uses local markup only and stays inside the bounded Demo Pages file area with no scripts, forms, embeds, or external resources.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Featured profiles</p>
+      <h2>Representative leaders, summarized in text only.</h2>
+    </div>
+    <div class="status-list">
+      <p><strong>Head of government:</strong> a short profile can note public role, governing priorities, and a restrained civic-facing summary.</p>
+      <p><strong>Head of state:</strong> a second profile can outline ceremonial presence, diplomatic visibility, and a few stable descriptors.</p>
+      <p><strong>Regional leader:</strong> a third profile can place the person in a broader geopolitical frame without adding links or media.</p>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Reading notes</p>
+      <h2>The page is designed for calm comparison.</h2>
+    </div>
+    <div>
+      <p>The content stays narrow enough to audit easily while still giving the page a distinct editorial identity. It does not attempt to be a directory, database, or live political feed.</p>
+      <p><a href="/demo/pages/">Back to Demo Pages</a></p>
+    </div>
+  </section>
+{% endblock %}
