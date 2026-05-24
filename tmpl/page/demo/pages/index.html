@@ -16,31 +16,6 @@
 {% endblock %}
 
 {% block content %}
-  <section class="section mode-card-grid">
-    <div class="section-head">
-      <p class="eyebrow">Why This Exists</p>
-      <h2>This page demonstrates a working mechanism, not a page-generation trick.</h2>
-      <p>Software products need channels for feedback, defects, boundary-crossing requests, and feature signals. GitHub Issues are one practical form of that channel. A GitHub Issue is treated here as a development signal, not as a publishing request. Demo Pages shows what happens when such a signal is processed through a controlled repository workflow instead of through arbitrary publishing.</p>
-    </div>
-    <div class="card-grid">
-      <article class="card status-card">
-        <p class="status-label">Development Signal</p>
-        <h3>A GitHub Issue becomes the public entry point.</h3>
-        <p>A visitor can open a constrained issue in the site repository. The issue is treated as a bounded development signal, not as a direct publishing entitlement.</p>
-      </article>
-      <article class="card status-card">
-        <p class="status-label">Controlled Processing</p>
-        <h3>Agents work inside documented boundaries.</h3>
-        <p>ADSM provides the context and control model. GitHub Flows orchestrates agent work from GitHub events, containers provide the bounded execution layer, and GitHub Flows App provides the host application wrapper behind this public workflow surface.</p>
-      </article>
-      <article class="card status-card">
-        <p class="status-label">Public Evidence</p>
-        <h3>The resulting page is proof, not the product goal.</h3>
-        <p>If the request survives validation and merge, the generated page appears here as evidence that an external signal moved through a controlled trajectory and became a bounded production artifact.</p>
-      </article>
-    </div>
-  </section>
-
   <section class="section mode-proof-matrix">
     <div class="section-head">
       <p class="eyebrow">Public evidence</p>
@@ -69,6 +44,31 @@
         <p>The strongest public proof begins only when a constrained issue completes the visible trajectory to a published page artifact.</p>
       </article>
     {% endif %}
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="section-head">
+      <p class="eyebrow">Why This Exists</p>
+      <h2>This page demonstrates a working mechanism, not a page-generation trick.</h2>
+      <p>Software products need channels for feedback, defects, boundary-crossing requests, and feature signals. GitHub Issues are one practical form of that channel. A GitHub Issue is treated here as a development signal, not as a publishing request. Demo Pages shows what happens when such a signal is processed through a controlled repository workflow instead of through arbitrary publishing.</p>
+    </div>
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Development Signal</p>
+        <h3>A GitHub Issue becomes the public entry point.</h3>
+        <p>A visitor can open a constrained issue in the site repository. The issue is treated as a bounded development signal, not as a direct publishing entitlement.</p>
+      </article>
+      <article class="card status-card">
+        <p class="status-label">Controlled Processing</p>
+        <h3>Agents work inside documented boundaries.</h3>
+        <p>ADSM provides the context and control model. GitHub Flows orchestrates agent work from GitHub events, containers provide the bounded execution layer, and GitHub Flows App provides the host application wrapper behind this public workflow surface.</p>
+      </article>
+      <article class="card status-card">
+        <p class="status-label">Public Evidence</p>
+        <h3>The resulting page is proof, not the product goal.</h3>
+        <p>If the request survives validation and merge, the generated page appears here as evidence that an external signal moved through a controlled trajectory and became a bounded production artifact.</p>
+      </article>
+    </div>
   </section>
 
   <section class="section split mode-readable-stack">
