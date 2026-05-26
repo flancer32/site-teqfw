@@ -1,0 +1,44 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">Demo Page Artifact</p>
+      <h1>Русская локализация</h1>
+      <p>Эта bounded demo page показывает локализованный текст для русскоязычных посетителей. Она остается статичной, инертной и предназначенной только для просмотра.</p>
+    </div>
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Назначение</p>
+        <h2>Страница демонстрирует русский текст без интерактивности.</h2>
+        <p>Здесь показаны только заголовки, короткие абзацы и простые списки, которые помогают проверить локализацию в безопасном формате.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Содержимое</p>
+        <h2>Все формулировки остаются краткими и нейтральными.</h2>
+        <p>Страница не использует скрипты, формы, внешние ресурсы или иные активные элементы. Вся видимая информация ограничена рамками Demo Pages.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Граница</p>
+        <h2>Артефакт остается bounded и самодостаточным.</h2>
+        <p>Он существует как изолированный демонстрационный результат и не меняет навигацию, инфраструктуру или общую структуру сайта.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Кратко</p>
+      <h2>Это статичная демонстрация русскоязычного контента.</h2>
+    </div>
+    <div>
+      <p>Страница помогает оценить локализацию, сохраняя инертность, компактность и полную привязку к bounded Demo Pages workflow.</p>
+      <p><a href="/demo/pages/">Вернуться к Demo Pages</a></p>
+    </div>
+  </section>
+{% endblock %}
