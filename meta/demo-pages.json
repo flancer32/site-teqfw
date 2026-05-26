@@ -48,6 +48,21 @@
     {
       "area": "demo",
       "demo": true,
+      "description": "A bounded static page presenting Russian localization text for Russian-speaking visitors in an inert layout.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/russian-localization/",
+      "slug": "russian-localization",
+      "template": "page/demo/pages/russian-localization/index.html",
+      "title": "Русская локализация",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/108"
+      }
+    },
+    {
+      "area": "demo",
+      "demo": true,
       "description": "A bounded inert demo page that explains why required elements are missing and keeps the result concise and inspectable.",
       "generated": true,
       "isNavigable": false,
