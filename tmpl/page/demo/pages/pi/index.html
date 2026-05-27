@@ -1,0 +1,56 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">Demo Page Artifact</p>
+      <h1>Pi</h1>
+      <p>This bounded demo page presents a static inert view of Pi digits with short explanatory text. It is meant for inspection, not interaction.</p>
+    </div>
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Presentation</p>
+        <h2>Readable digits, kept local.</h2>
+        <p>The content stays entirely within repository-managed markup and avoids scripts, forms, embeds, remote assets, and other active behavior.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Scope</p>
+        <h2>A narrow numeric study.</h2>
+        <p>The page is intentionally compact so the visible text remains easy to audit while still giving the artifact a clear subject.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Boundary</p>
+        <h2>Static content only.</h2>
+        <p>This generated page stays inside the bounded Demo Pages file area and uses no user JavaScript, no remote resources, and no executable content.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Digits</p>
+      <h2>Selected decimal expansion of Pi.</h2>
+    </div>
+    <div class="status-list">
+      <p><strong>Prefix:</strong> 3.1415926535 8979323846 2643383279 5028841971 6939937510</p>
+      <p><strong>Continuation:</strong> 5820974944 5923078164 0628620899 8628034825 3421170679</p>
+      <p><strong>Further digits:</strong> 8214808651 3282306647 0938446095 5058223172 5359408128</p>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Reading notes</p>
+      <h2>The page keeps its voice calm and literal.</h2>
+    </div>
+    <div>
+      <p>The intent is to present the familiar constant in a restrained editorial form. There is no calculator, no animation, and no interactive control surface.</p>
+      <p><a href="/demo/pages/">Back to Demo Pages</a></p>
+    </div>
+  </section>
+{% endblock %}

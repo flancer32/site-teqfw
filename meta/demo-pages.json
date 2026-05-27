@@ -3,6 +3,21 @@
     {
       "area": "demo",
       "demo": true,
+      "description": "A bounded static page presenting selected Pi digits in a calm, inert editorial layout.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/pi/",
+      "slug": "pi",
+      "template": "page/demo/pages/pi/index.html",
+      "title": "Pi",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/114"
+      }
+    },
+    {
+      "area": "demo",
+      "demo": true,
       "description": "A bounded static page comparing React, Vue, and $mol as three distinct approaches to UI development.",
       "generated": true,
       "isNavigable": false,
