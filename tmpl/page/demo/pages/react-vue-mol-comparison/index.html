@@ -1,0 +1,56 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">Demo Page Artifact</p>
+      <h1>React, Vue, and $mol Comparison</h1>
+      <p>This bounded demo page offers a short, static comparison of three UI frameworks. It is meant for inspection, not interaction, and it stays within the accepted issue scope.</p>
+    </div>
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">React</p>
+        <h2>Component-centric and ecosystem-rich.</h2>
+        <p>React is widely used for building interfaces from reusable components, with a large ecosystem and many established integration patterns.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Vue</p>
+        <h2>Approachable and expressive.</h2>
+        <p>Vue emphasizes clear templates, a gentle learning curve, and a compact core that still supports larger application structures.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">$mol</p>
+        <h2>Structured for strong conventions.</h2>
+        <p>$mol presents a more opinionated approach, with a focus on explicit structure and a framework style that differs from the mainstream JavaScript stack.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Reading frame</p>
+      <h2>The comparison stays narrow and practical.</h2>
+    </div>
+    <div class="status-list">
+      <p><strong>When choosing React:</strong> teams often want a large ecosystem, broad hiring familiarity, and flexible patterns.</p>
+      <p><strong>When choosing Vue:</strong> teams often want a balanced framework with a friendly onboarding path and compact public surface.</p>
+      <p><strong>When choosing $mol:</strong> teams may value its distinct conventions and the clarity of a strongly structured approach.</p>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Boundary</p>
+      <h2>This page remains static, inert, and bounded.</h2>
+    </div>
+    <div>
+      <p>The page uses local markup only. It avoids scripts, forms, embeds, remote assets, and interactive behavior so the result remains inspectable as a bounded demo artifact.</p>
+      <p><a href="/demo/pages/">Back to Demo Pages</a></p>
+    </div>
+  </section>
+{% endblock %}
