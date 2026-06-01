@@ -1,0 +1,56 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">Demo Page Artifact</p>
+      <h1>Cat Breeds</h1>
+      <p>This bounded demo page presents three cat breeds in a static, inert editorial layout. It is designed for inspection, not interaction.</p>
+    </div>
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Singapura</p>
+        <h2>Small, bright, and alert.</h2>
+        <p>The Singapura is often described as compact and quick to notice the room around it. The page keeps the summary brief and local.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Ragdoll</p>
+        <h2>Calm presence, soft outline.</h2>
+        <p>The Ragdoll is presented as a gentle, relaxed breed with a distinctive visual profile. The description stays text-only and easy to scan.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Thai</p>
+        <h2>Classical Siamese lineage.</h2>
+        <p>The Thai cat is framed as a traditional type with balanced features and a clear heritage. The page avoids images, scripts, and remote resources.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Comparative notes</p>
+      <h2>Three breeds, three readable descriptions.</h2>
+    </div>
+    <div class="status-list">
+      <p><strong>Temperament:</strong> each summary uses neutral language and keeps the tone calm and factual.</p>
+      <p><strong>Presentation:</strong> the layout remains local, static, and bounded to the Demo Pages file area.</p>
+      <p><strong>Scope:</strong> the page is intentionally narrow so the visible text remains easy to audit.</p>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Reading notes</p>
+      <h2>The page stays inert by design.</h2>
+    </div>
+    <div>
+      <p>There are no forms, no interactive widgets, no external embeds, and no executable content. The result is a simple public artifact built for review.</p>
+      <p><a href="/demo/pages/">Back to Demo Pages</a></p>
+    </div>
+  </section>
+{% endblock %}

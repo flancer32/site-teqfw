@@ -3,6 +3,21 @@
     {
       "area": "demo",
       "demo": true,
+      "description": "A bounded static page presenting three cat breeds in a calm inert editorial layout.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/cat-breeds/",
+      "slug": "cat-breeds",
+      "template": "page/demo/pages/cat-breeds/index.html",
+      "title": "Cat Breeds",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/118"
+      }
+    },
+    {
+      "area": "demo",
+      "demo": true,
       "description": "A bounded static page presenting selected Pi digits in a calm, inert editorial layout.",
       "generated": true,
       "isNavigable": false,
