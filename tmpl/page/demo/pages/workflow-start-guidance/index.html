@@ -1,0 +1,56 @@
+{% extends "layout/content.html" %}
+
+{% block content %}
+  <section class="section mode-readable-stack">
+    <div class="section-head">
+      <p class="eyebrow">Demo Page Artifact</p>
+      <h1>Workflow Start Guidance</h1>
+      <p>This bounded demo page explains the public Demo Pages admission handoff in a static, inert editorial layout. It is meant for inspection, not interaction.</p>
+    </div>
+  </section>
+
+  <section class="section mode-card-grid">
+    <div class="card-grid">
+      <article class="card status-card">
+        <p class="status-label">Admission</p>
+        <h2>The issue was accepted into the public demo-page flow.</h2>
+        <p>The page summarizes the start of the workflow without reproducing untrusted issue text or introducing active behavior.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Handoff</p>
+        <h2>The trusted work plan becomes the downstream instruction source.</h2>
+        <p>Only the sanitized handoff content is used to guide generation, and it stays bounded to local repository-managed markup.</p>
+      </article>
+
+      <article class="card status-card">
+        <p class="status-label">Boundary</p>
+        <h2>The artifact remains static and inert.</h2>
+        <p>There are no scripts, forms, embeds, redirects, remote assets, or executable instructions on the page.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Workflow notes</p>
+      <h2>The public branch moves by label and evidence.</h2>
+    </div>
+    <div class="status-list">
+      <p><strong>State:</strong> the accepted label authorizes generation of a bounded page artifact.</p>
+      <p><strong>Evidence:</strong> the generated page and its metadata entry provide the visible linkage for later stages.</p>
+      <p><strong>Limit:</strong> the visible text stays comfortably below the 5000-token ceiling.</p>
+    </div>
+  </section>
+
+  <section class="section split mode-readable-stack">
+    <div>
+      <p class="eyebrow">Summary</p>
+      <h2>The result is short, local, and inspectable.</h2>
+    </div>
+    <div>
+      <p>The page marks the beginning of the Demo Pages flow without adding product behavior, site routing changes, or external dependencies.</p>
+      <p><a href="/demo/pages/">Back to Demo Pages</a></p>
+    </div>
+  </section>
+{% endblock %}

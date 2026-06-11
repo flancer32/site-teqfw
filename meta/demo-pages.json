@@ -119,6 +119,21 @@
       "trajectory": {
         "issueUrl": "https://github.com/flancer32/site-teqfw/issues/102"
       }
+    },
+    {
+      "area": "demo",
+      "demo": true,
+      "description": "A bounded static page that explains the public demo-page admission handoff in a calm, inert editorial layout.",
+      "generated": true,
+      "isNavigable": false,
+      "isSitemap": false,
+      "route": "/demo/pages/workflow-start-guidance/",
+      "slug": "workflow-start-guidance",
+      "template": "page/demo/pages/workflow-start-guidance/index.html",
+      "title": "Workflow Start Guidance",
+      "trajectory": {
+        "issueUrl": "https://github.com/flancer32/site-teqfw/issues/122"
+      }
     }
   ]
 }
