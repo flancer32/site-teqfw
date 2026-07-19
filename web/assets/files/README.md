@@ -1,0 +1,1 @@
+- teqfw-di-functional-example.zip: https://habr.com/ru/articles/1060340/comments/#comment_30234868
