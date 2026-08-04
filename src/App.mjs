@@ -11,9 +11,9 @@ export default class TeqFw_Site_App {
    * @param {TeqFw_Site_Controller_Ssr} deps.controller
    * @param {TeqFw_Site_Env_Loader} deps.envLoader
    * @param {Fl32_Web_Back_Handler_Pre_Log} deps.logHandler
-   * @param {Fl32_Web_Node_Events} deps.nodeEvents
+   * @param {TeqFw_Site_Node_Events} deps.nodeEvents
    * @param {Fl32_Web_Back_PipelineEngine} deps.pipeline
-   * @param {Fl32_Web_Back_Config_Runtime$Factory} deps.runtimeConfigFactory
+   * @param {Fl32_Web_Back_Config_Runtime__Factory} deps.runtimeConfigFactory
    * @param {Fl32_Web_Back_Server} deps.server
    * @param {TeqFw_Site_Model_StaticFiles} deps.staticFiles
    * @param {Fl32_Web_Back_Handler_Static} deps.staticHandler
@@ -24,7 +24,14 @@ export default class TeqFw_Site_App {
     let composed = false;
     let started = false;
 
-    this.start = async ({projectRoot = process.cwd()} = {}) => {
+    /**
+     * Starts the configured web server once.
+     * @param {object} params
+   * @param {string} params.projectRoot
+     * @returns {Promise<*>}
+     */
+    this.start = async (params = {}) => {
+      const {projectRoot = process.cwd()} = params;
       if (!configured) {
         runtimeConfigFactory.configure(await envLoader.load({projectRoot}));
         runtimeConfigFactory.freeze();
@@ -51,6 +58,10 @@ export default class TeqFw_Site_App {
       return server.getInstance();
     };
 
+    /**
+     * Stops the web server when it is running.
+     * @returns {Promise<void>}
+     */
     this.stop = async () => {
       if (started) {
         await server.stop();
@@ -58,7 +69,15 @@ export default class TeqFw_Site_App {
       }
     };
 
-    this.run = async ({projectRoot, cliArgs = []}) => {
+    /**
+     * Runs the application until a termination signal is received.
+     * @param {object} params
+     * @param {string} params.projectRoot
+   * @param {string[]} params.cliArgs
+     * @returns {Promise<number>}
+     */
+    this.run = async (params) => {
+      const {projectRoot, cliArgs = []} = params;
       void cliArgs;
       const instance = await this.start({projectRoot});
       const address = instance && typeof instance.address === "function" ? instance.address() : undefined;

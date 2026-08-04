@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {fileURLToPath} from "node:url";
+import * as nunjucks from "nunjucks";
 
 import Renderer from "../../../src/Model/Renderer.mjs";
 
@@ -50,6 +51,7 @@ test("Renderer renders semantic content through Nunjucks templates", async () =>
       {href: "/demo/pages/", isCurrent: false, label: "Demo"},
       {href: "/contacts", isCurrent: false, label: "Contacts"},
     ]},
+    nunjucks,
     pages: {getByRoute: () => page, getGeneratedDemoPages: () => []},
   });
 
@@ -137,6 +139,7 @@ test("Renderer renders ecosystem philosophy with site canonical and source docum
       getTemplateRoot: () => fileURLToPath(new URL("../../../tmpl/", import.meta.url)),
     },
     navigation: {getItems: () => []},
+    nunjucks,
     pages: {getByRoute: () => page, getGeneratedDemoPages: () => []},
   });
 

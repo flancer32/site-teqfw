@@ -8,8 +8,8 @@
 export default class TeqFw_Site_Config {
   /**
    * @param {object} deps
-   * @param {typeof import("node:fs")} deps.fs
-   * @param {typeof import("node:url")} deps.nodeUrl
+   * @param {TeqFw_Site_Node_Fs} deps.fs
+   * @param {TeqFw_Site_Node_Url} deps.nodeUrl
    */
   constructor({fs, nodeUrl}) {
     const {fileURLToPath} = nodeUrl;
@@ -19,17 +19,30 @@ export default class TeqFw_Site_Config {
     const webRoot = fileURLToPath(new URL("../web/", import.meta.url));
     const metadata = normalizeMetadata(JSON.parse(fs.readFileSync(metaPath, "utf8")));
 
+    /** @returns {*} */
     this.getBrand = () => metadata.brand;
+    /** @returns {string} */
     this.getDemoPagesMetaPath = () => demoPagesMetaPath;
+    /** @returns {*} */
     this.getFooter = () => metadata.footer;
+    /** @returns {*} */
     this.getNavigation = () => metadata.navigation;
+    /** @returns {Array<object>} */
     this.getPages = () => metadata.pages;
+    /** @returns {*} */
     this.getSite = () => metadata.site;
+    /** @returns {string} */
     this.getTemplateRoot = () => templateRoot;
+    /** @returns {string} */
     this.getWebRoot = () => webRoot;
   }
 }
 
+/**
+ * Validates and freezes site metadata.
+ * @param {*} value
+ * @returns {object}
+ */
 function normalizeMetadata(value) {
   assertRecord(value, "metadata");
   const site = normalizeFields(value.site, "site", ["description", "lang", "name", "strapline", "title", "url"]);
@@ -40,6 +53,11 @@ function normalizeMetadata(value) {
   return deepFreeze({brand, footer, navigation, pages, site: {...site, footer}});
 }
 
+/**
+ * Normalizes footer metadata.
+ * @param {*} value
+ * @returns {object}
+ */
 function normalizeFooter(value) {
   const footer = normalizeFields(value, "footer", ["identity", "statement"]);
   assertRecord(value.author, "footer.author");
@@ -48,6 +66,11 @@ function normalizeFooter(value) {
   return footer;
 }
 
+/**
+ * Normalizes authored page records.
+ * @param {*} value
+ * @returns {Array<object>}
+ */
 function normalizePages(value) {
   if (!Array.isArray(value) || value.length === 0) throw new Error("site metadata pages must be a non-empty array");
   const routes = new Set();
@@ -80,6 +103,12 @@ function normalizePages(value) {
   });
 }
 
+/**
+ * Validates primary navigation against page records.
+ * @param {*} value
+ * @param {Array<object>} pages
+ * @returns {object}
+ */
 function normalizeNavigation(value, pages) {
   assertRecord(value, "navigation");
   if (!Array.isArray(value.primary) || value.primary.length === 0) {
@@ -97,6 +126,11 @@ function normalizeNavigation(value, pages) {
   return {primary};
 }
 
+/**
+ * Derives a default content area from a route.
+ * @param {string} route
+ * @returns {string}
+ */
 function deriveAreaFromRoute(route) {
   if (route === "/") return "home";
   if (route.startsWith("/demo/pages")) return "demo";
@@ -104,16 +138,35 @@ function deriveAreaFromRoute(route) {
   return segments[0] ?? "home";
 }
 
+/**
+ * Normalizes a page area.
+ * @param {*} value
+ * @param {string} path
+ * @returns {string}
+ */
 function normalizeArea(value, path) {
   assertString(value, path);
   return value.trim();
 }
 
+/**
+ * Validates a boolean metadata field.
+ * @param {*} value
+ * @param {string} path
+ * @returns {boolean}
+ */
 function normalizeBoolean(value, path) {
   if (typeof value !== "boolean") throw new Error(`${path} must be a boolean`);
   return value;
 }
 
+/**
+ * Selects and normalizes declared metadata fields.
+ * @param {*} value
+ * @param {string} path
+ * @param {Array<string>} fields
+ * @returns {object}
+ */
 function normalizeFields(value, path, fields) {
   assertRecord(value, path);
   const result = {};
@@ -133,24 +186,53 @@ function normalizeFields(value, path, fields) {
   return result;
 }
 
+/**
+ * Requires an object record.
+ * @param {*} value
+ * @param {string} path
+ * @returns {void}
+ */
 function assertRecord(value, path) {
   if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`${path} must be an object`);
 }
 
+/**
+ * Requires an absolute route.
+ * @param {*} value
+ * @param {string} path
+ * @returns {void}
+ */
 function assertRoute(value, path) {
   assertString(value, path);
   if (!value.startsWith("/")) throw new Error(`${path} must be an absolute route`);
 }
 
+/**
+ * Requires a non-empty string.
+ * @param {*} value
+ * @param {string} path
+ * @returns {void}
+ */
 function assertString(value, path) {
   assertStringValue(value, path);
   if (value.trim() === "") throw new Error(`${path} must be a non-empty string`);
 }
 
+/**
+ * Requires a string value.
+ * @param {*} value
+ * @param {string} path
+ * @returns {void}
+ */
 function assertStringValue(value, path) {
   if (typeof value !== "string") throw new Error(`${path} must be a string`);
 }
 
+/**
+ * Recursively freezes a value.
+ * @param {*} value
+ * @returns {*}
+ */
 function deepFreeze(value) {
   if (Array.isArray(value)) {
     for (const item of value) deepFreeze(item);

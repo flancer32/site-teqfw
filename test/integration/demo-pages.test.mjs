@@ -5,6 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import {fileURLToPath} from "node:url";
+import * as nunjucks from "nunjucks";
 
 import DemoPages from "../../src/Model/DemoPages.mjs";
 import Navigation from "../../src/Model/Navigation.mjs";
@@ -42,7 +43,7 @@ test("valid generated demo pages resolve through the normal SSR composition and 
     const siteMap = new SiteMap({config, demoPages, fs, path});
     const pages = new Page({demoPages, siteMap});
     const navigation = new Navigation({config, siteMap});
-    const renderer = new Renderer({config, navigation, pages});
+    const renderer = new Renderer({config, navigation, nunjucks, pages});
     const routes = new RouteMap({siteMap});
 
     assert.equal(routes.resolve("/demo/pages/"), "/demo/pages/");
@@ -85,7 +86,7 @@ test("Demo Pages index renders its empty state when no generated pages exist", a
     const siteMap = new SiteMap({config, demoPages, fs, path});
     const pages = new Page({demoPages, siteMap});
     const navigation = new Navigation({config, siteMap});
-    const renderer = new Renderer({config, navigation, pages});
+    const renderer = new Renderer({config, navigation, nunjucks, pages});
 
     const indexHtml = await renderer.render("/demo/pages/");
     assert.match(indexHtml, /No public processed-signal artifacts are listed yet\./);

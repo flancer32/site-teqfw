@@ -6,7 +6,17 @@
  */
 
 export default class TeqFw_Site_Model_Navigation {
+  /**
+   * @param {object} deps
+   * @param {TeqFw_Site_Config} deps.config
+   * @param {TeqFw_Site_Model_SiteMap} deps.siteMap
+   */
   constructor({config, siteMap}) {
+    /**
+     * Builds navigation items for a route.
+     * @param {string} currentRoute
+     * @returns {Array<object>}
+     */
     this.getItems = (currentRoute) => {
       const currentPage = siteMap.getByRoute(currentRoute);
       const currentArea = currentPage?.area ?? null;

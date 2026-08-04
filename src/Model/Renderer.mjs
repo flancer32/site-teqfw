@@ -6,12 +6,23 @@
  */
 
 export default class TeqFw_Site_Model_Renderer {
-  constructor({config, navigation, pages}) {
+  /**
+   * @param {object} deps
+   * @param {TeqFw_Site_Config} deps.config
+   * @param {TeqFw_Site_Model_Navigation} deps.navigation
+   * @param {TeqFw_Site_Model_Page} deps.pages
+   * @param {typeof import("nunjucks")} deps.nunjucks
+   */
+  constructor({config, navigation, pages, nunjucks}) {
     let env = null;
 
+    /**
+     * Renders a documented page route with the shared Nunjucks environment.
+     * @param {string} route
+     * @returns {Promise<string>}
+     */
     this.render = async (route) => {
       if (!env) {
-        const nunjucks = await import("nunjucks");
         env = new nunjucks.Environment(
           new nunjucks.FileSystemLoader(config.getTemplateRoot(), {noCache: true}),
           {autoescape: true, lstripBlocks: true, trimBlocks: true},
@@ -34,5 +45,6 @@ export default class TeqFw_Site_Model_Renderer {
 export const __deps__ = Object.freeze({
   config: "TeqFw_Site_Config$",
   navigation: "TeqFw_Site_Model_Navigation$",
+  nunjucks: "npm:nunjucks",
   pages: "TeqFw_Site_Model_Page$",
 });

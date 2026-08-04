@@ -6,6 +6,10 @@
  */
 
 export default class TeqFw_Site_Model_RouteMap {
+  /**
+   * @param {object} deps
+   * @param {TeqFw_Site_Model_SiteMap} deps.siteMap
+   */
   constructor({siteMap}) {
     const routes = new Map(siteMap.getPages().map((page) => [normalizePath(page.route), page.route]));
     const redirects = new Map([
@@ -13,15 +17,30 @@ export default class TeqFw_Site_Model_RouteMap {
       ["/philosophy", "/ecosystem/philosophy"],
     ]);
 
+    /**
+     * Resolves a request URL to a documented route.
+     * @param {string} url
+     * @returns {string|null}
+     */
     this.resolve = (url) => {
       const pathname = normalizePath(url);
       return routes.get(pathname) ?? null;
     };
 
+    /**
+     * Resolves a legacy URL to its permanent redirect target.
+     * @param {string} url
+     * @returns {string|null}
+     */
     this.resolveRedirect = (url) => redirects.get(normalizePath(url)) ?? null;
   }
 }
 
+/**
+ * Converts a request URL to a normalized pathname.
+ * @param {string} url
+ * @returns {string}
+ */
 function normalizePath(url) {
   try {
     return new URL(url, "http://localhost").pathname.replace(/\/+$/u, "") || "/";

@@ -14,6 +14,10 @@ declare global {
   type TeqFw_Site_Model_RouteMap = import("./src/Model/RouteMap.mjs").default;
   type TeqFw_Site_Model_StaticFiles = import("./src/Model/StaticFiles.mjs").default;
   type TeqFw_Site_Responder_Html = import("./src/Responder/Html.mjs").default;
+  type TeqFw_Site_Node_Events = typeof import("node:events");
+  type TeqFw_Site_Node_Fs = typeof import("node:fs");
+  type TeqFw_Site_Node_Path = typeof import("node:path");
+  type TeqFw_Site_Node_Url = typeof import("node:url");
 }
 
 export {};

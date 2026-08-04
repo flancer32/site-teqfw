@@ -6,10 +6,22 @@
  */
 
 export default class TeqFw_Site_Env_Loader {
+  /**
+   * @param {object} deps
+   * @param {TeqFw_Site_Node_Fs} deps.fs
+   * @param {TeqFw_Site_Node_Path} deps.path
+   */
   constructor({fs, path}) {
     const fsPromises = fs.promises;
 
-    this.load = async ({projectRoot}) => {
+    /**
+     * Loads environment values for the web runtime.
+     * @param {object} params
+     * @param {string} params.projectRoot
+     * @returns {Promise<object>}
+     */
+    this.load = async (params) => {
+      const {projectRoot} = params;
       mergeMissing(await readEnv(path.join(projectRoot, ".env"), fsPromises));
       const result = {};
       const port = process.env.TEQFW_WEB_SERVER_PORT ?? process.env.PORT;
@@ -30,6 +42,12 @@ export default class TeqFw_Site_Env_Loader {
   }
 }
 
+/**
+ * Reads and parses an environment file.
+ * @param {string} file
+ * @param {*} fsPromises
+ * @returns {Promise<object>}
+ */
 async function readEnv(file, fsPromises) {
   try {
     return parseEnv(await fsPromises.readFile(file, "utf8"));
@@ -39,6 +57,11 @@ async function readEnv(file, fsPromises) {
   }
 }
 
+/**
+ * Parses dotenv-style lines.
+ * @param {string} content
+ * @returns {object}
+ */
 function parseEnv(content) {
   const result = {};
   for (const raw of content.split(/\r?\n/u)) {
@@ -53,6 +76,11 @@ function parseEnv(content) {
   return result;
 }
 
+/**
+ * Removes matching single or double quotes.
+ * @param {string} value
+ * @returns {string}
+ */
 function stripQuotes(value) {
   if ((value.startsWith("\"") && value.endsWith("\"")) || (value.startsWith("'") && value.endsWith("'"))) {
     return value.slice(1, -1);
@@ -60,6 +88,11 @@ function stripQuotes(value) {
   return value;
 }
 
+/**
+ * Adds values without overriding existing process environment values.
+ * @param {object} entries
+ * @returns {void}
+ */
 function mergeMissing(entries) {
   for (const [key, value] of Object.entries(entries)) {
     if (process.env[key] === undefined) process.env[key] = value;

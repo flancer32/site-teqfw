@@ -6,8 +6,22 @@
  */
 
 export default class TeqFw_Site_Responder_Redirect {
+  /**
+   * The responder has no dependencies.
+   * @param {object} deps
+   */
   constructor({}) {
-    this.send = ({location, method, res, statusCode}) => {
+    /**
+     * Sends a redirect response.
+   * @param {object} deps
+   * @param {string} deps.location
+   * @param {string} deps.method
+   * @param {*} deps.res
+   * @param {number} deps.statusCode
+     * @returns {void}
+     */
+    this.send = (deps) => {
+      const {location, method, res, statusCode} = deps;
       res.writeHead(statusCode, {
         "cache-control": "no-store",
         "location": location,

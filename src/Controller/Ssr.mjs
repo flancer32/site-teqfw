@@ -6,6 +6,15 @@
  */
 
 export default class TeqFw_Site_Controller_Ssr {
+  /**
+   * @param {object} deps
+   * @param {Fl32_Web_Back_Enum_Stage} deps.STAGE
+   * @param {Fl32_Web_Back_Dto_Info__Factory} deps.dtoInfoFactory
+   * @param {TeqFw_Site_Responder_Redirect} deps.redirectResponder
+   * @param {TeqFw_Site_Model_Renderer} deps.renderer
+   * @param {TeqFw_Site_Responder_Html} deps.responder
+   * @param {TeqFw_Site_Model_RouteMap} deps.routes
+   */
   constructor({STAGE, dtoInfoFactory, redirectResponder, renderer, responder, routes}) {
     const info = dtoInfoFactory.create({
       after: ["Fl32_Web_Back_Handler_Static"],
@@ -13,6 +22,11 @@ export default class TeqFw_Site_Controller_Ssr {
       stage: STAGE.PROCESS,
     });
 
+    /**
+     * Handles one request in the PROCESS stage.
+     * @param {Fl32_Web_Back_Dto_RequestContext} context
+     * @returns {Promise<void>}
+     */
     this.handle = async (context) => {
       const redirect = routes.resolveRedirect(context.request.url ?? "/");
       if (redirect) {
@@ -22,7 +36,7 @@ export default class TeqFw_Site_Controller_Ssr {
           res: context.response,
           statusCode: 301,
         });
-        context.complete();
+        context.completed = true;
         return;
       }
       const route = routes.resolve(context.request.url ?? "/");
@@ -33,9 +47,13 @@ export default class TeqFw_Site_Controller_Ssr {
         res: context.response,
         statusCode: 200,
       });
-      context.complete();
+      context.completed = true;
     };
 
+    /**
+     * Returns the handler registration metadata.
+     * @returns {Fl32_Web_Back_Dto_Info}
+     */
     this.getRegistrationInfo = () => info;
   }
 }
