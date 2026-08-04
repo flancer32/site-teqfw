@@ -35,8 +35,8 @@
     "test": "npm run test:unit && npm run test:integration"
   },
   "dependencies": {
-    "@flancer32/teq-web": "^0.11.0",
-    "@teqfw/di": ">=2.5.1 <3.0.0",
+    "@flancer32/teq-web": "github:flancer32/teq-web#main",
+    "@teqfw/di": "github:teqfw/di#main",
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {
