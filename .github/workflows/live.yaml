@@ -101,9 +101,10 @@ jobs:
             # Start cluster (4 workers)
             cd "${{ env.APP_DIR }}/prod"
 
-            pm2 start bin/bootstrap.mjs \
+            pm2 start ./node_modules/@teqfw/cli/bin/teq.mjs \
               --name ${{ env.PM2_APP }} \
-              -i 4
+              -i 4 \
+              -- fl32:web:start
 
             pm2 save
 

@@ -2,107 +2,74 @@
 
 /**
  * @namespace TeqFw_Site_App
- * @description Composes the SSR site runtime with the TeqFW web host.
+ * @description Composes the SSR site handlers during the TeqFW CLI lifecycle.
  */
 
 export default class TeqFw_Site_App {
   /**
    * @param {object} deps
    * @param {TeqFw_Site_Controller_Ssr} deps.controller
-   * @param {TeqFw_Site_Env_Loader} deps.envLoader
+   * @param {TeqFw_Cfg_Source_DotenvFile} deps.dotenv
+   * @param {TeqFw_Cfg_Loader} deps.cfgLoader
+   * @param {TeqFw_Cfg_Source_ProcessEnv} deps.processEnv
+   * @param {TeqFw_Site_Node_FsPromises} deps.fs
    * @param {Fl32_Web_Back_Handler_Pre_Log} deps.logHandler
-   * @param {TeqFw_Site_Node_Events} deps.nodeEvents
    * @param {Fl32_Web_Back_PipelineEngine} deps.pipeline
-   * @param {Fl32_Web_Back_Config_Runtime__Factory} deps.runtimeConfigFactory
-   * @param {Fl32_Web_Back_Server} deps.server
    * @param {TeqFw_Site_Model_StaticFiles} deps.staticFiles
    * @param {Fl32_Web_Back_Handler_Static} deps.staticHandler
+   * @param {TeqFw_Log_Provider} deps.logger
+   * @param {TeqFw_Site_Node_Path} deps.path
+   * @param {TeqFw_Site_Node_Process} deps.process
    */
-  constructor({controller, envLoader, logHandler, nodeEvents, pipeline, runtimeConfigFactory, server, staticFiles, staticHandler}) {
-    const {once} = nodeEvents;
-    let configured = false;
-    let composed = false;
+  constructor({cfgLoader, controller, dotenv, fs, logHandler, logger, path, pipeline, process, processEnv, staticFiles, staticHandler}) {
+    const log = logger.forSource("TeqFw_Site_App");
     let started = false;
 
     /**
-     * Starts the configured web server once.
-     * @param {object} params
-   * @param {string} params.projectRoot
-     * @returns {Promise<*>}
+     * Loads configuration and registers all request handlers before the CLI command starts the server.
+     * @returns {Promise<void>}
      */
-    this.start = async (params = {}) => {
-      const {projectRoot = process.cwd()} = params;
-      if (!configured) {
-        runtimeConfigFactory.configure(await envLoader.load({projectRoot}));
-        runtimeConfigFactory.freeze();
-        configured = true;
+    this.onStartup = async () => {
+      if (started) return;
+      const projectRoot = process.cwd();
+      const sources = [];
+      try {
+        await fs.access(path.join(projectRoot, ".env"));
+        sources.push(dotenv.create({path: path.join(projectRoot, ".env"), id: "site-dotenv"}));
+      } catch (error) {
+        if (error?.code !== "ENOENT") throw error;
       }
-
-      if (!composed) {
-        await staticHandler.init({sources: staticFiles.getSources()});
-        pipeline.addHandler(logHandler);
-        pipeline.addHandler(staticHandler);
-        pipeline.addHandler(controller);
-        composed = true;
-      }
-
-      if (!started) {
-        await server.start();
-        const instance = server.getInstance();
-        if (instance && !instance.listening && typeof instance.once === "function") {
-          await once(instance, "listening");
-        }
-        started = true;
-      }
-
-      return server.getInstance();
+      sources.push(processEnv.create(process.env, "process-env"));
+      await cfgLoader.load(sources);
+      await staticHandler.init({sources: staticFiles.getSources()});
+      pipeline.addHandler(logHandler);
+      pipeline.addHandler(staticHandler);
+      pipeline.addHandler(controller);
+      started = true;
+      log.info("SSR site handlers initialized");
     };
 
     /**
      * Stops the web server when it is running.
      * @returns {Promise<void>}
      */
-    this.stop = async () => {
-      if (started) {
-        await server.stop();
-        started = false;
-      }
-    };
-
-    /**
-     * Runs the application until a termination signal is received.
-     * @param {object} params
-     * @param {string} params.projectRoot
-   * @param {string[]} params.cliArgs
-     * @returns {Promise<number>}
-     */
-    this.run = async (params) => {
-      const {projectRoot, cliArgs = []} = params;
-      void cliArgs;
-      const instance = await this.start({projectRoot});
-      const address = instance && typeof instance.address === "function" ? instance.address() : undefined;
-      const port = address && typeof address === "object" ? address.port : "unknown";
-      console.log(`TeqFW site is available on http://127.0.0.1:${port} (${projectRoot})`);
-
-      const [signal] = await Promise.race([
-        once(process, "SIGINT"),
-        once(process, "SIGTERM"),
-      ]);
-      if (signal) console.log(`Stopping on ${signal}.`);
-      await this.stop();
-      return 0;
+    this.onShutdown = async () => {
+      started = false;
     };
   }
 }
 
 export const __deps__ = Object.freeze({
+  cfgLoader: "TeqFw_Cfg_Loader$",
   controller: "TeqFw_Site_Controller_Ssr$",
-  envLoader: "TeqFw_Site_Env_Loader$",
+  dotenv: "TeqFw_Cfg_Source_DotenvFile$",
+  fs: "node:fs/promises",
   logHandler: "Fl32_Web_Back_Handler_Pre_Log$",
-  nodeEvents: "node:events",
+  logger: "TeqFw_Log_Provider$",
+  path: "node:path",
   pipeline: "Fl32_Web_Back_PipelineEngine$",
-  runtimeConfigFactory: "Fl32_Web_Back_Config_Runtime__Factory$",
-  server: "Fl32_Web_Back_Server$",
+  process: "node:process",
+  processEnv: "TeqFw_Cfg_Source_ProcessEnv$",
   staticFiles: "TeqFw_Site_Model_StaticFiles$",
   staticHandler: "Fl32_Web_Back_Handler_Static$",
 });

@@ -11,7 +11,7 @@ export default class TeqFw_Site_Model_Renderer {
    * @param {TeqFw_Site_Config} deps.config
    * @param {TeqFw_Site_Model_Navigation} deps.navigation
    * @param {TeqFw_Site_Model_Page} deps.pages
-   * @param {typeof import("nunjucks")} deps.nunjucks
+   * @param {TeqFw_Site_Nunjucks} deps.nunjucks
    */
   constructor({config, navigation, pages, nunjucks}) {
     let env = null;

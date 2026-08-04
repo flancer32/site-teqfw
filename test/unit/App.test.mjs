@@ -1,47 +1,37 @@
 import assert from "node:assert/strict";
-import events from "node:events";
 import test from "node:test";
 
 import App from "../../src/App.mjs";
 
-test("App configures runtime, composes pipeline, starts once, and stops once", async () => {
+test("App loads configuration and composes the pipeline through the CLI lifecycle", async () => {
   const calls = [];
   const app = new App({
+    cfgLoader: {load: async (sources) => calls.push(["load", sources.length])},
     controller: {name: "controller"},
-    envLoader: {load: async ({projectRoot}) => {
-      calls.push(["load", projectRoot]);
-      return {port: "0"};
-    }},
+    dotenv: {create: (options) => { calls.push(["dotenv", options.id]); return "dotenv-source"; }},
+    fs: {access: async () => { throw Object.assign(new Error("missing"), {code: "ENOENT"}); }},
     logHandler: {name: "log"},
-    nodeEvents: events,
+    logger: {forSource: (source) => ({info: (message) => calls.push(["log", source, message])})},
+    path: {join: (...parts) => parts.join("/")},
     pipeline: {addHandler: (handler) => calls.push(["handler", handler.name])},
-    runtimeConfigFactory: {
-      configure: (cfg) => calls.push(["configure", cfg]),
-      freeze: () => calls.push(["freeze"]),
-    },
-    server: {
-      getInstance: () => ({listening: true}),
-      start: async () => calls.push(["start"]),
-      stop: async () => calls.push(["stop"]),
-    },
+    process: {cwd: () => "/tmp/site", env: {}},
+    processEnv: {create: (env, id) => { calls.push(["process-env", id, env]); return "process-source"; }},
     staticFiles: {getSources: () => ["source"]},
     staticHandler: {name: "static", init: async ({sources}) => calls.push(["static", sources])},
   });
 
-  await app.start({projectRoot: "/tmp/site"});
-  await app.start({projectRoot: "/ignored"});
-  await app.stop();
-  await app.stop();
+  await app.onStartup();
+  await app.onStartup();
+  await app.onShutdown();
+  await app.onShutdown();
 
   assert.deepEqual(calls, [
-    ["load", "/tmp/site"],
-    ["configure", {port: "0"}],
-    ["freeze"],
+    ["process-env", "process-env", {}],
+    ["load", 1],
     ["static", ["source"]],
     ["handler", "log"],
     ["handler", "static"],
     ["handler", "controller"],
-    ["start"],
-    ["stop"],
+    ["log", "TeqFw_Site_App", "SSR site handlers initialized"],
   ]);
 });

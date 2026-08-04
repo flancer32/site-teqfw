@@ -29,7 +29,7 @@ This repository contains the production code for the public website. The site is
 - `tmpl/` Nunjucks templates for public pages and shared layout fragments.
 - `meta/` authored site metadata and page definitions.
 - `web/` public static assets.
-- `bin/bootstrap.mjs` application entry point.
+- `@teqfw/cli` provides the `teq` application entry point.
 - `test/` unit and integration tests.
 - `ctx/` cognitive context and product specifications that govern the implementation.
 
@@ -58,7 +58,10 @@ Start the site:
 npm start
 ```
 
-By default the built-in web server uses port `3000`.
+The command runs `teq fl32:web:start`; the built-in web server uses port `3000` by default.
+Use `npm exec -- teq help` to inspect available commands. Configuration is read from
+`.env` and the process environment through `@teqfw/cfg`; process environment values
+take precedence.
 
 ## Validation
 
