@@ -13,10 +13,10 @@ export default class TeqFw_Site_App {
    * @param {TeqFw_Cfg_Loader} deps.cfgLoader
    * @param {TeqFw_Cfg_Source_ProcessEnv} deps.processEnv
    * @param {TeqFw_Site_Node_FsPromises} deps.fs
-   * @param {Fl32_Web_Back_Handler_Pre_Log} deps.logHandler
-   * @param {Fl32_Web_Back_PipelineEngine} deps.pipeline
+   * @param {TeqFw_Web_Back_Handler_Pre_Log} deps.logHandler
+   * @param {TeqFw_Web_Back_PipelineEngine} deps.pipeline
    * @param {TeqFw_Site_Model_StaticFiles} deps.staticFiles
-   * @param {Fl32_Web_Back_Handler_Static} deps.staticHandler
+   * @param {TeqFw_Web_Back_Handler_Static} deps.staticHandler
    * @param {TeqFw_Log_Provider} deps.logger
    * @param {TeqFw_Site_Node_Path} deps.path
    * @param {TeqFw_Site_Node_Process} deps.process
@@ -64,12 +64,12 @@ export const __deps__ = Object.freeze({
   controller: "TeqFw_Site_Controller_Ssr$",
   dotenv: "TeqFw_Cfg_Source_DotenvFile$",
   fs: "node:fs/promises",
-  logHandler: "Fl32_Web_Back_Handler_Pre_Log$",
+  logHandler: "TeqFw_Web_Back_Handler_Pre_Log$",
   logger: "TeqFw_Log_Provider$",
   path: "node:path",
-  pipeline: "Fl32_Web_Back_PipelineEngine$",
+  pipeline: "TeqFw_Web_Back_PipelineEngine$",
   process: "node:process",
   processEnv: "TeqFw_Cfg_Source_ProcessEnv$",
   staticFiles: "TeqFw_Site_Model_StaticFiles$",
-  staticHandler: "Fl32_Web_Back_Handler_Static$",
+  staticHandler: "TeqFw_Web_Back_Handler_Static$",
 });

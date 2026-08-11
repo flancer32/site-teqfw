@@ -11,5 +11,5 @@ const teq = path.join(root, "node_modules", "@teqfw", "cli", "bin", "teq.mjs");
 test("teqfw CLI discovers the site host and web command", () => {
   const output = execFileSync(process.execPath, [teq, "help"], {cwd: root, encoding: "utf8"});
 
-  assert.match(output, /fl32:web:start\s+Start the web server\./);
+  assert.match(output, /web:start\s+Start the web server\./);
 });

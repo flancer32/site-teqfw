@@ -29,17 +29,17 @@
   ],
   "types": "types.d.ts",
   "scripts": {
-    "start": "teq fl32:web:start",
+    "start": "teq web:start",
     "test:unit": "find test/unit -name '*.test.mjs' -print0 | xargs -0 node --test",
     "test:integration": "find test/integration -name '*.test.mjs' -print0 | xargs -0 node --test",
     "test": "npm run test:unit && npm run test:integration"
   },
   "dependencies": {
-    "@flancer32/teq-web": "github:flancer32/teq-web#main",
     "@teqfw/cfg": "github:teqfw/cfg#main",
     "@teqfw/cli": "github:teqfw/cli#main",
     "@teqfw/di": "github:teqfw/di#main",
     "@teqfw/log": "github:teqfw/log#main",
+    "@teqfw/web": "^2.0.0",
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {
@@ -62,7 +62,7 @@
       "cli": {
         "plugin": "TeqFw_Site_App$",
         "command": {
-          "default": "fl32:web:start"
+          "default": "web:start"
         }
       }
     }

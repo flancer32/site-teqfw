@@ -6,7 +6,7 @@ All notable changes to this project are documented here.
 
 ### Breaking
 
-- Replaced the application-owned `bin/bootstrap.mjs` process entrypoint with `@teqfw/cli` and `teq fl32:web:start`.
+- Replaced the application-owned `bin/bootstrap.mjs` process entrypoint with `@teqfw/cli` and `teq web:start`.
 - Converted the application runtime composition into a TeqFW CLI lifecycle plugin.
 - Migrated web configuration loading to `@teqfw/cfg` and lifecycle logging to `@teqfw/log`.
 - Updated deployment to launch the published `@teqfw/cli` executable through PM2.

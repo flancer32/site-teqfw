@@ -58,7 +58,7 @@ Start the site:
 npm start
 ```
 
-The command runs `teq fl32:web:start`; the built-in web server uses port `3000` by default.
+The command runs `teq web:start`; the built-in web server uses port `3000` by default.
 Use `npm exec -- teq help` to inspect available commands. Configuration is read from
 `.env` and the process environment through `@teqfw/cfg`; process environment values
 take precedence.

@@ -28,7 +28,7 @@ test("SSR controller renders known routes and ignores unknown routes", async () 
 
   assert.equal(handled.completed, true);
   assert.equal(sent[0].html, "<html>/method</html>");
-  assert.equal(controller.getRegistrationInfo().after[0], "Fl32_Web_Back_Handler_Static");
+  assert.equal(controller.getRegistrationInfo().after[0], "TeqFw_Web_Back_Handler_Static");
 });
 
 test("SSR controller sends permanent redirects before page resolution", async () => {
