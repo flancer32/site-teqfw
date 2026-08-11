@@ -12,18 +12,18 @@ declare global {
   type TeqFw_Site_Controller_Ssr = import("./src/Controller/Ssr.mjs").default;
   type TeqFw_Site_Model_Navigation = import("./src/Model/Navigation.mjs").default;
   type TeqFw_Site_Model_Page = import("./src/Model/Page.mjs").default;
-  type TeqFw_Site_Model_SiteMap = import("./src/Model/SiteMap.mjs").default;
   type TeqFw_Site_Model_Renderer = import("./src/Model/Renderer.mjs").default;
   type TeqFw_Site_Model_RouteMap = import("./src/Model/RouteMap.mjs").default;
+  type TeqFw_Site_Model_SiteMap = import("./src/Model/SiteMap.mjs").default;
   type TeqFw_Site_Model_StaticFiles = import("./src/Model/StaticFiles.mjs").default;
-  type TeqFw_Site_Responder_Html = import("./src/Responder/Html.mjs").default;
   type TeqFw_Site_Node_Events = typeof import("node:events");
   type TeqFw_Site_Node_Fs = typeof import("node:fs");
-  type TeqFw_Site_Node_Path = typeof import("node:path");
   type TeqFw_Site_Node_FsPromises = typeof import("node:fs/promises");
+  type TeqFw_Site_Node_Path = typeof import("node:path");
   type TeqFw_Site_Node_Process = typeof import("node:process");
   type TeqFw_Site_Node_Url = typeof import("node:url");
   type TeqFw_Site_Nunjucks = typeof import("nunjucks");
+  type TeqFw_Site_Responder_Html = import("./src/Responder/Html.mjs").default;
 }
 
 export {};

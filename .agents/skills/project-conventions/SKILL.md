@@ -36,11 +36,14 @@ description: Project-specific conventions. Use for every task in this repository
 - `teqfw-esm-validator src` is required for changes under `src/`; it does not apply to package files, tests, templates, public assets, or generated files.
 - Use `teqfw-platform` for TeqFW architecture, dependency integration, and package-contract decisions.
 
+## GitHub
+
+- In all multiline text sent to GitHub, including issues and comments, use actual line breaks; never send literal `\n`, which GitHub displays as text.
+
 ## Shared memory
 
 - `flancer32/ai-memo` is the shared cross-project issue tracker and memory.
 - May create issues: source `flancer32/site-teqfw`; every issue must name the project or projects expected to resolve it.
-- In multiline text sent to GitHub, use actual line breaks; never send literal `\n`.
 - When referring to a commit in another repository, use its full GitHub URL: `https://github.com/vendor/name/commit/<sha>`.
 - Notes: `project/flancer32/site-teqfw/`.
 
