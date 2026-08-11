@@ -104,7 +104,7 @@ jobs:
             pm2 start ./node_modules/@teqfw/cli/bin/teq.mjs \
               --name ${{ env.PM2_APP }} \
               -i 4 \
-              -- fl32:web:start
+              -- web:start
 
             pm2 save
 
