@@ -39,6 +39,7 @@ test("Renderer exposes TeqFW-first homepage and primary navigation", async () =>
 test("Renderer exposes factual Showcase composition roles", async () => {
   const html = await createRenderer().render("/showcase");
   for (const artifact of ["teq-tmpl", "teq-cms", "site_wg", "wiredgeese.com", "mindstream"]) assert.match(html, new RegExp(artifact));
+  assert.match(html, /href="https:\/\/mindstream\.app\.wiredgeese\.com\/"/);
   assert.match(html, /foundational plugin/);
   assert.match(html, /single human developer/);
   assert.doesNotMatch(html, /GitHub Flows/);

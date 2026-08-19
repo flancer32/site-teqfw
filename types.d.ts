@@ -3,7 +3,7 @@ declare global {
   type TeqFw_Cfg_Source_DotenvFile = {create(options: {path: string, id?: string}): TeqFw_Cfg_Source};
   type TeqFw_Cfg_Source_ProcessEnv = {create(environment: NodeJS.ProcessEnv, id?: string): TeqFw_Cfg_Source};
   type TeqFw_Log_Provider = {forSource(source: string): {info(message: string): void}};
-  type TeqFw_Site_App = import("./src/App.mjs").default;
+  type TeqFw_Site_Cli_Plugin = import("./src/Cli/Plugin.mjs").default;
   type TeqFw_Site_Config = import("./src/Config.mjs").default;
   type TeqFw_Site_Config$Page = import("./src/Config.mjs").Page;
   type TeqFw_Site_Config$PageHero = import("./src/Config.mjs").PageHero;

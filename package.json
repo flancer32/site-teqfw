@@ -59,7 +59,7 @@
         ]
       },
       "cli": {
-        "plugin": "TeqFw_Site_App$",
+        "plugin": "TeqFw_Site_Cli_Plugin$",
         "command": {
           "default": "web:start"
         }
