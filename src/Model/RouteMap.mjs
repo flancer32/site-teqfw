@@ -14,6 +14,7 @@ export default class TeqFw_Site_Model_RouteMap {
     const routes = new Map(siteMap.getPages().map((page) => [normalizePath(page.route), page.route]));
     const redirects = new Map([
       ["/access", "/contacts"],
+      ["/proof", "/showcase"],
       ["/philosophy", "/ecosystem/philosophy"],
     ]);
 

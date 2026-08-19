@@ -25,6 +25,12 @@ test("RouteMap resolves legacy philosophy redirect without exposing a duplicate 
   assert.equal(routes.resolveRedirect("/ecosystem/philosophy"), null);
 });
 
+test("RouteMap redirects legacy Proof route to Showcase", () => {
+  const routes = new RouteMap({siteMap: {getPages: () => [{route: "/"}, {route: "/showcase"}]}});
+  assert.equal(routes.resolve("/proof"), null);
+  assert.equal(routes.resolveRedirect("/proof?from=legacy"), "/showcase");
+});
+
 test("RouteMap redirects legacy access route to contacts", () => {
   const routes = new RouteMap({siteMap: {getPages: () => [{route: "/"}, {route: "/contacts"}]}});
 

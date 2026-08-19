@@ -1,84 +1,46 @@
 # @flancer32/site-teqfw
 
-Server-side rendered website application for [`teqfw.com`](https://teqfw.com/).
+Server-side rendered public website for [Tequila Framework](https://teqfw.com/).
 
-`teqfw.com` is the public entry point into Alex Gusev's TeqFW + ADSM ecosystem for controlled JavaScript product creation and evolution with LLM agents. The site is also a proof product: it presents a method for governed agent-driven development and is itself built and evolved through that approach.
+`teqfw.com` presents TeqFW as an evolving modular JavaScript platform for web applications. Its positioning is **Enterprise architecture. Vanilla JavaScript.**
 
-The product starts from a specific visitor problem: LLM agents can generate code, but repeated agent-driven changes can make a real JavaScript product fragile when product meaning lives only in prompts and chat history. The site presents one coherent answer to that control problem through:
+TeqFW adapts mature architectural ideas—dependency injection, late binding, runtime composition, namespaces, explicit contracts, lifecycle, configuration, logging, persistence, and web infrastructure—to native JavaScript ES modules. `@teqfw/di` is the foundational plugin; the platform also includes `@teqfw/log`, `@teqfw/cfg`, `@teqfw/cli`, `@teqfw/db`, and `@teqfw/web`.
 
-- `TeqFW` as the governed JavaScript product environment for agent work.
-- `ADSM` as the cognitive-context method for agent-driven software management.
-- `GitHub Flows` as the repository-driven workflow proof point.
-- public proof artifacts, including this site itself.
-- the ADSM book as the current paid explanation layer.
+The primary site structure is:
 
-The central positioning statement is: `Code is cheap. Show me the spec.`
+- Home — platform discovery.
+- Ecosystem — platform-to-plugin-to-application composition.
+- Philosophy — TeqFW architectural principles and the canonical `teqfw/di` source.
+- Showcase — inspectable `teq-tmpl`, `teq-cms`, `site_wg` / wiredgeese.com, and mindstream software.
+- Contacts — TeqFW-related and formal communication.
 
-## Product Scope
-
-This repository contains the production code for the public website. The site is not intended to be a generic documentation portal, CMS, framework showcase, or consulting funnel. It is a compact engineering presentation surface that:
-
-- qualifies advanced agent users and product owners,
-- frames the control problem around repeated agent-driven JavaScript changes,
-- routes visitors to public proof, method, ecosystem, and contact pages,
-- supports the ADSM book as the current primary commercial action.
+ADSM and its book are related methodology; `/method` remains a secondary page. The retained Demo Pages route is legacy experimental material and is excluded from primary navigation and the sitemap.
 
 ## Repository Structure
 
 - `src/` application source code.
-- `tmpl/` Nunjucks templates for public pages and shared layout fragments.
-- `meta/` authored site metadata and page definitions.
-- `web/` public static assets.
-- `@teqfw/cli` provides the `teq` application entry point.
+- `tmpl/` Nunjucks templates for public pages and shared layouts.
+- `meta/` authored site and page metadata.
+- `web/` public static assets and sitemap.
 - `test/` unit and integration tests.
-- `ctx/` cognitive context and product specifications that govern the implementation.
+- `ctx/` cognitive context governing the implementation.
 
 ## Local Development
 
-Requirements:
-
-- Node.js `>=20`
-- npm
-
-Install dependencies:
+Requirements: Node.js `>=20` and npm.
 
 ```bash
 npm install
-```
-
-Create local environment configuration:
-
-```bash
 cp .env.example .env
-```
-
-Start the site:
-
-```bash
 npm start
 ```
 
-The command runs `teq web:start`; the built-in web server uses port `3000` by default.
-Use `npm exec -- teq help` to inspect available commands. Configuration is read from
-`.env` and the process environment through `@teqfw/cfg`; process environment values
-take precedence.
+`npm start` runs `teq web:start`; the built-in web server uses port `3000` by default. Configuration is read through `@teqfw/cfg` from `.env` and the process environment.
 
 ## Validation
-
-Run the full test suite:
 
 ```bash
 npm test
 ```
 
-Run only unit tests:
-
-```bash
-npm run test:unit
-```
-
-Run only integration tests:
-
-```bash
-npm run test:integration
-```
+The project currently has no `typecheck` script; use the TeqFW ESM validator for changes under `src/`.

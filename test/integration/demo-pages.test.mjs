@@ -67,7 +67,7 @@ test("valid generated demo pages resolve through the normal SSR composition and 
     assert.match(generatedHtml, /not official TeqFW, ADSM, or Alex Gusev editorial content/);
 
     const navItems = navigation.getItems("/demo/pages/hello-world/");
-    assert.equal(navItems.some((item) => item.label === "Demo" && item.isCurrent), true);
+    assert.equal(navItems.some((item) => item.label === "Demo"), false);
     assert.equal(navItems.some((item) => item.href === "/demo/pages/hello-world/"), false);
   } finally {
     await fsPromises.rm(root, {recursive: true, force: true});
