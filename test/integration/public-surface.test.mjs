@@ -19,6 +19,7 @@ test("public machine documents are static files in the web root", () => {
   assert.match(llms, /https:\/\/teqfw\.com\/ecosystem\.md/);
   assert.match(llms, /https:\/\/teqfw\.com\/showcase\.md/);
   assert.doesNotMatch(llms, /demo\/pages/);
+  assert.equal(fs.existsSync(new URL("index.html", webRoot)), false);
 
   for (const route of markdownRoutes) {
     assert.ok(fs.statSync(new URL(route, webRoot)).isFile(), route);
