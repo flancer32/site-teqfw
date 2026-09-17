@@ -15,15 +15,12 @@ export default class TeqFw_Site_Config {
     const {fileURLToPath} = nodeUrl;
     const metaPath = fileURLToPath(new URL("../meta/site.json", import.meta.url));
     const demoPagesMetaPath = fileURLToPath(new URL("../meta/demo-pages.json", import.meta.url));
-    const agentRoot = fileURLToPath(new URL("../ai/", import.meta.url));
     const templateRoot = fileURLToPath(new URL("../tmpl/", import.meta.url));
     const webRoot = fileURLToPath(new URL("../web/", import.meta.url));
     const metadata = normalizeMetadata(JSON.parse(fs.readFileSync(metaPath, "utf8")));
 
     /** @returns {*} */
     this.getBrand = () => metadata.brand;
-    /** @returns {string} */
-    this.getAgentRoot = () => agentRoot;
     /** @returns {string} */
     this.getDemoPagesMetaPath = () => demoPagesMetaPath;
     /** @returns {*} */
@@ -107,7 +104,7 @@ function normalizePages(value) {
     record.isDemoGenerated = false;
     record.isSitemap = normalizeBoolean(page.isSitemap, `${path}.isSitemap`);
     if (page.markdownRoute !== undefined) {
-      record.markdownRoute = normalizeMachineRoute(page.markdownRoute, `${path}.markdownRoute`);
+      record.markdownRoute = normalizeMarkdownRoute(page.markdownRoute, `${path}.markdownRoute`);
       if (markdownRoutes.has(record.markdownRoute)) throw new Error(`${path}.markdownRoute duplicates ${record.markdownRoute}`);
       markdownRoutes.add(record.markdownRoute);
     } else if (record.isSitemap) {
@@ -239,12 +236,12 @@ function assertRoute(value, path) {
 }
 
 /**
- * Requires a safe public machine-document route.
+ * Requires a safe public Markdown route.
  * @param {*} value
  * @param {string} path
  * @returns {string}
  */
-function normalizeMachineRoute(value, path) {
+function normalizeMarkdownRoute(value, path) {
   assertRoute(value, path);
   if (!/^\/(?:[a-z0-9-]+\/)*[a-z0-9-]+\.md$/u.test(value)) throw new Error(`${path} must be a safe public Markdown route`);
   return value.replace(/\/+$/u, "") || "/";

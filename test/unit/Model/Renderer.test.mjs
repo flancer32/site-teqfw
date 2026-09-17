@@ -36,7 +36,6 @@ test("Renderer exposes TeqFW-first homepage and primary navigation", async () =>
   assert.doesNotMatch(html, />Method<\/a>/);
   assert.doesNotMatch(html, />Proof<\/a>/);
   assert.doesNotMatch(html, />Demo<\/a>/);
-  assert.doesNotMatch(html, /GitHub Flows/);
 });
 
 test("Renderer exposes factual Showcase composition roles", async () => {
@@ -45,7 +44,6 @@ test("Renderer exposes factual Showcase composition roles", async () => {
   assert.match(html, /href="https:\/\/mindstream\.app\.wiredgeese\.com\/"/);
   assert.match(html, /foundational plugin/);
   assert.match(html, /single human developer/);
-  assert.doesNotMatch(html, /GitHub Flows/);
 });
 
 test("Renderer presents the complete TeqFW philosophy and plugin skills", async () => {

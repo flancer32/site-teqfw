@@ -2,7 +2,7 @@
 
 /**
  * @namespace TeqFw_Site_Model_StaticFiles
- * @description Declares public static sources for the TeqFW static handler.
+ * @description Declares the public web root for the TeqFW static handler.
  */
 
 export default class TeqFw_Site_Model_StaticFiles {
@@ -25,7 +25,7 @@ export default class TeqFw_Site_Model_StaticFiles {
         root: path.join(webRoot, "assets"),
       }),
       Object.freeze({
-        allow: Object.freeze({".": Object.freeze(["favicon.ico", "index.html", "robots.txt", "sitemap.xml"])}),
+        allow: Object.freeze({".": Object.freeze(["."])}),
         prefix: "/",
         root: webRoot,
       }),

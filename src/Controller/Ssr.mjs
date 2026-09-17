@@ -17,7 +17,7 @@ export default class TeqFw_Site_Controller_Ssr {
    */
   constructor({STAGE, dtoInfoFactory, redirectResponder, renderer, responder, routes}) {
     const info = dtoInfoFactory.create({
-      after: ["TeqFw_Web_Back_Handler_Static", "TeqFw_Site_Controller_Machine"],
+      after: ["TeqFw_Web_Back_Handler_Static"],
       name: this.constructor.name,
       stage: STAGE.PROCESS,
     });

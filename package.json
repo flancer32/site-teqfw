@@ -34,11 +34,11 @@
     "test": "npm run test:unit && npm run test:integration"
   },
   "dependencies": {
-    "@teqfw/cfg": "github:teqfw/cfg#main",
-    "@teqfw/cli": "github:teqfw/cli#main",
-    "@teqfw/di": "github:teqfw/di#main",
-    "@teqfw/log": "github:teqfw/log#main",
-    "@teqfw/web": "^2.0.0",
+    "@teqfw/cfg": "^2.1.0",
+    "@teqfw/cli": "^2.3.0",
+    "@teqfw/di": "^2.10.0",
+    "@teqfw/log": "^2.1.2",
+    "@teqfw/web": "^2.1.1",
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {

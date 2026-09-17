@@ -21,7 +21,7 @@ ADSM and its book are related methodology; `/method` remains a secondary page. T
 - `src/` application source code.
 - `tmpl/` Nunjucks templates for public pages and shared layouts.
 - `meta/` authored site and page metadata.
-- `web/` public static assets and sitemap.
+- `web/` public static assets, service files, and machine-readable Markdown documents.
 - `test/` unit and integration tests.
 - `ctx/` cognitive context governing the implementation.
 

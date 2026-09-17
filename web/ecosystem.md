@@ -23,4 +23,4 @@ The foundational package also publishes its [agent skill](https://github.com/teq
 - [`site_wg`](https://github.com/flancer32/site_wg) is a host application using `teq-cms` and powering [`wiredgeese.com`](https://wiredgeese.com/).
 - [`mindstream`](https://github.com/flancer32/mindstream) demonstrates a structurally different database-backed TeqFW application, with a public route at [`mindstream.app.wiredgeese.com`](https://mindstream.app.wiredgeese.com/).
 
-ADSM is related methodology, and GitHub Flows is historical or related work. Neither is a required TeqFW layer.
+ADSM is related methodology, not a required TeqFW layer.

@@ -9,7 +9,6 @@ test("Cli Plugin composes the pipeline through the CLI lifecycle", async () => {
     controller: {name: "controller"},
     logHandler: {name: "log"},
     logger: {forSource: (source) => ({info: (message) => calls.push(["log", source, message])})},
-    machineController: {name: "machine"},
     pipeline: {addHandler: (handler) => calls.push(["handler", handler.name])},
     staticFiles: {getSources: () => ["source"]},
     staticHandler: {name: "static", init: async ({sources}) => calls.push(["static", sources])},
@@ -24,7 +23,6 @@ test("Cli Plugin composes the pipeline through the CLI lifecycle", async () => {
     ["static", ["source"]],
     ["handler", "log"],
     ["handler", "static"],
-    ["handler", "machine"],
     ["handler", "controller"],
     ["log", "TeqFw_Site_Cli_Plugin", "SSR site handlers initialized"],
   ]);

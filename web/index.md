@@ -6,7 +6,7 @@ TeqFW adapts mature architectural ideas to native JavaScript: dependency injecti
 
 ## What TeqFW is—and is not
 
-TeqFW is a platform for web applications, not only a DI container. `@teqfw/di` is its foundational plugin, while logging, configuration, lifecycle, persistence, and web runtime are complementary platform concerns. TeqFW is not an AI-agent framework, ADSM, GitHub Flows, a generic CMS, or a documentation portal. Agent-readiness is a secondary benefit of its explicit architecture.
+TeqFW is a platform for web applications, not only a DI container. `@teqfw/di` is its foundational plugin, while logging, configuration, lifecycle, persistence, and web runtime are complementary platform concerns. TeqFW is not an AI-agent framework, a generic CMS, or a documentation portal. Agent-readiness is a secondary benefit of its explicit architecture.
 
 ## Platform foundation
 

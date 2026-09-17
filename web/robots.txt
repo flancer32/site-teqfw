@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# AI
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: MetaAI
+Allow: /
 Sitemap: https://teqfw.com/sitemap.xml

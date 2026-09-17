@@ -9,7 +9,6 @@ TeqFW adapts mature architectural ideas—dependency injection, late binding, mo
 - TeqFW is a platform for web applications, not only a DI container. `@teqfw/di` is the foundational plugin; the other core packages add complementary infrastructure.
 - TeqFW is not an AI-agent framework. Agent-readiness is a secondary architectural advantage: explicit structure and package contracts make work easier for people and coding agents.
 - ADSM is related methodology for directing coding-agent work. It is not the TeqFW product or a prerequisite for using TeqFW.
-- GitHub Flows is historical or related work, not a TeqFW platform layer or required workflow.
 - TeqFW is not a generic CMS, website builder, or documentation portal. `teq-cms` and the Showcase are evidence of composition, not the product category.
 
 ## Start here
