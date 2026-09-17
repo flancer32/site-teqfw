@@ -12,9 +12,12 @@ test("Config exposes immutable TeqFW-first site metadata", () => {
   assert.equal(config.getSite().strapline, "Enterprise architecture. Vanilla JavaScript.");
   assert.equal(config.getBrand().desktopText, "Tequila Framework");
   assert.equal(config.getFooter().identity, "Tequila Framework");
+  assert.deepEqual(config.getPlatform().map((item) => item.id), ["di", "log", "cfg", "cli", "db", "web"]);
+  assert.match(config.getAgentRoot(), /[\\/]ai[\\/]$/);
   assert.deepEqual(config.getNavigation().primary, ["/ecosystem", "/ecosystem/philosophy", "/showcase", "/contacts"]);
   assert.deepEqual(pages.map((page) => page.route), ["/", "/ecosystem", "/ecosystem/philosophy", "/showcase", "/method", "/demo/pages/", "/contacts"]);
   assert.equal(pages.find((page) => page.route === "/showcase")?.template, "page/showcase.html");
+  assert.deepEqual(pages.filter((page) => page.isSitemap).map((page) => page.markdownRoute), ["/index.md", "/ecosystem.md", "/ecosystem/philosophy.md", "/showcase.md", "/method.md", "/contacts.md"]);
   assert.equal(pages.find((page) => page.route === "/method")?.isNavigable, false);
   assert.equal(pages.find((page) => page.route === "/demo/pages/")?.isSitemap, false);
   assert.ok(pages[0].summary.includes("modular JavaScript platform"));

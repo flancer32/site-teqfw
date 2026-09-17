@@ -31,6 +31,8 @@ test("Renderer exposes TeqFW-first homepage and primary navigation", async () =>
   assert.match(html, /@teqfw\/web/);
   for (const repository of ["di", "log", "cfg", "cli", "db", "web"]) assert.match(html, new RegExp(`href="https://github\\.com/teqfw/${repository}"`));
   assert.match(html, /href="\/showcase"/);
+  assert.match(html, /<link rel="alternate" type="text\/markdown" href="\/index\.md">/);
+  assert.match(html, /<link rel="describedby" href="\/llms\.txt">/);
   assert.doesNotMatch(html, />Method<\/a>/);
   assert.doesNotMatch(html, />Proof<\/a>/);
   assert.doesNotMatch(html, />Demo<\/a>/);
@@ -59,4 +61,14 @@ test("Renderer presents the complete TeqFW philosophy and plugin skills", async 
   assert.match(ecosystem, /Every plugin explains how agents use it/);
   for (const repository of ["di", "log", "cfg", "cli", "db", "web"]) assert.match(ecosystem, new RegExp(`href="https://github\\.com/teqfw/${repository}"`));
   assert.match(ecosystem, /https:\/\/github\.com\/teqfw\/cli\/tree\/main\/skills\/teqfw-cli/);
+  assert.match(ecosystem, /<link rel="alternate" type="text\/markdown" href="\/ecosystem\.md">/);
+});
+
+test("Renderer advertises Markdown alternates for every sitemap page", async () => {
+  const renderer = createRenderer();
+  for (const [route, markdownRoute] of [["/", "/index.md"], ["/ecosystem", "/ecosystem.md"], ["/ecosystem/philosophy", "/ecosystem/philosophy.md"], ["/showcase", "/showcase.md"], ["/method", "/method.md"], ["/contacts", "/contacts.md"]]) {
+    const html = await renderer.render(route);
+    assert.match(html, new RegExp(`<link rel="alternate" type="text/markdown" href="${markdownRoute.replaceAll("/", "\\/")}">`));
+    assert.match(html, /<link rel="describedby" href="\/llms\.txt">/);
+  }
 });

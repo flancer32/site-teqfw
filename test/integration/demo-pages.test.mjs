@@ -153,6 +153,7 @@ function createConfig(root) {
     getFooter: () => siteMetadata.footer,
     getNavigation: () => siteMetadata.navigation,
     getPages: () => siteMetadata.pages,
+    getPlatform: () => siteMetadata.platform,
     getSite: () => ({...siteMetadata.site, footer: siteMetadata.footer}),
     getTemplateRoot: () => path.join(root, "tmpl"),
   };

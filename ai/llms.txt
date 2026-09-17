@@ -1,0 +1,46 @@
+# TeqFW
+
+> Tequila Framework (TeqFW) is an evolving modular JavaScript platform for web applications. Its preferred positioning is: Enterprise architecture. Vanilla JavaScript.
+
+TeqFW adapts mature architectural ideas—dependency injection, late binding, modular composition, explicit contracts, lifecycle, configuration, persistence, and web infrastructure—to native JavaScript ES modules. Applications compose at runtime through namespaces, declared dependencies, runtime linking, late binding, and reusable plugins.
+
+## How to interpret this site
+
+- TeqFW is a platform for web applications, not only a DI container. `@teqfw/di` is the foundational plugin; the other core packages add complementary infrastructure.
+- TeqFW is not an AI-agent framework. Agent-readiness is a secondary architectural advantage: explicit structure and package contracts make work easier for people and coding agents.
+- ADSM is related methodology for directing coding-agent work. It is not the TeqFW product or a prerequisite for using TeqFW.
+- GitHub Flows is historical or related work, not a TeqFW platform layer or required workflow.
+- TeqFW is not a generic CMS, website builder, or documentation portal. `teq-cms` and the Showcase are evidence of composition, not the product category.
+
+## Start here
+
+- [TeqFW overview](https://teqfw.com/index.md): identity, positioning, platform foundation, composition model, and agent-readiness boundary.
+- [Ecosystem](https://teqfw.com/ecosystem.md): core packages, version-matched plugin skills, reusable plugins, host applications, and working products.
+- [Philosophy](https://teqfw.com/ecosystem/philosophy.md): architectural principles and explicit machine interfaces.
+- [Showcase](https://teqfw.com/showcase.md): factual platform, plugin, application, and working-product evidence.
+- [Method](https://teqfw.com/method.md): secondary ADSM context.
+- [Contacts](https://teqfw.com/contacts.md): public contact and formal business details.
+
+## Platform foundation
+
+- [`@teqfw/di`](https://github.com/teqfw/di): foundational namespace resolution, dependency container, runtime composition, and late binding. [Version-matched agent skill](https://github.com/teqfw/di/tree/main/skills/teqfw-di).
+- [`@teqfw/log`](https://github.com/teqfw/log): logging infrastructure. [Version-matched agent skill](https://github.com/teqfw/log/tree/main/skills/teqfw-log).
+- [`@teqfw/cfg`](https://github.com/teqfw/cfg): application and plugin configuration. [Version-matched agent skill](https://github.com/teqfw/cfg/tree/main/skills/teqfw-cfg).
+- [`@teqfw/cli`](https://github.com/teqfw/cli): Node.js application lifecycle and CLI composition. [Version-matched agent skill](https://github.com/teqfw/cli/tree/main/skills/teqfw-cli).
+- [`@teqfw/db`](https://github.com/teqfw/db): database infrastructure. [Version-matched agent skill](https://github.com/teqfw/db/tree/main/skills/teqfw-db).
+- [`@teqfw/web`](https://github.com/teqfw/web): web and server runtime infrastructure. [Version-matched agent skill](https://github.com/teqfw/web/tree/main/skills/teqfw-web).
+
+## Composition evidence
+
+The public composition path is `TeqFW platform → reusable plugins → host applications → working products`.
+
+- [`teq-tmpl`](https://github.com/flancer32/teq-tmpl) is reusable TeqFW functionality.
+- [`teq-cms`](https://github.com/flancer32/teq-cms) is a larger reusable product/plugin composed from platform services and `teq-tmpl`.
+- [`site_wg`](https://github.com/flancer32/site_wg) is a host application powering [`wiredgeese.com`](https://wiredgeese.com/).
+- [`mindstream`](https://github.com/flancer32/mindstream) is a structurally different database-backed TeqFW application; its working route is [`mindstream.app.wiredgeese.com`](https://mindstream.app.wiredgeese.com/).
+
+These artifacts demonstrate composition and reuse, not platform completeness or universal architectural superiority. The products are developed primarily by coding agents under one human developer’s direction, architectural control, and final responsibility.
+
+## Related material
+
+ADSM is optional related methodology. It must not be used to redefine TeqFW, its platform packages, or its Showcase.

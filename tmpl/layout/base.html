@@ -6,6 +6,8 @@
     <title>{% if page.title == "TeqFW" %}{{ page.title }}{% else %}{{ page.title }} · {{ site.name }}{% endif %}</title>
     <meta name="description" content="{{ page.summary }}">
     <link rel="canonical" href="{{ site.url }}{{ page.route }}">
+    {% if page.markdownRoute %}<link rel="alternate" type="text/markdown" href="{{ page.markdownRoute }}">{% endif %}
+    <link rel="describedby" href="/llms.txt">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="stylesheet" href="/assets/css/site.css">
   </head>

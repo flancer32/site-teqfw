@@ -1,0 +1,20 @@
+# TeqFW philosophy
+
+TeqFW is a contextual architecture for modular-monolith web applications with a single database and a unified JavaScript codebase across browser and server environments. The browser is the most universal runtime environment, and JavaScript is its native language. TeqFW is not a universal architecture: distributed high-performance systems, embedded software, and work not centered on LLM assistance may call for other approaches.
+
+Conventional architectures can hide relationships behind static imports, reflection, build pipelines, and undocumented conventions. TeqFW responds with explicit contracts, predictable namespaces, runtime linking, late binding, and machine-oriented documentation so that developers and LLM coding agents can inspect and evolve structure.
+
+## Principles
+
+1. **Unified JavaScript language across the stack.** JavaScript runs across browser and Node.js environments, reducing the translation between parts of an application.
+2. **Late binding.** Container- and namespace-based addressing keeps dependencies explicit, replaceable, and testable without rigid compile-time coupling.
+3. **Evolutionary resilience.** Clear interaction contracts and flexible processing help software absorb changing requirements with fewer changes to existing components.
+4. **Functional separation of data and logic.** Data objects hold state while stateless handlers process structured data, making processing easier to test and extend.
+5. **Namespaces for structure and isolation.** Modules, packages, database tables, APIs, and configuration occupy predictable namespaces.
+6. **Pure JavaScript with JSDoc.** JSDoc supports IDEs and analysis while source and runtime remain one program, without a TypeScript compilation layer.
+7. **Code and documentation optimized for LLM agents.** Predictable files, declared dependencies, module conventions, and consistent documentation help agents assist without hiding architecture from people.
+8. **Explicit machine interfaces.** Every TeqFW plugin distributes a version-matched agent skill at `skills/<name>/SKILL.md`; consuming projects may mount it in `.agents/skills/`.
+
+The current skill catalogs are [`@teqfw/di`](https://github.com/teqfw/di/tree/main/skills/teqfw-di), [`@teqfw/log`](https://github.com/teqfw/log/tree/main/skills/teqfw-log), [`@teqfw/cfg`](https://github.com/teqfw/cfg/tree/main/skills/teqfw-cfg), [`@teqfw/cli`](https://github.com/teqfw/cli/tree/main/skills/teqfw-cli), [`@teqfw/db`](https://github.com/teqfw/db/tree/main/skills/teqfw-db), and [`@teqfw/web`](https://github.com/teqfw/web/tree/main/skills/teqfw-web). These machine interfaces complement human-facing README files and source code.
+
+TeqFW explores an architecture where humans and LLM agents collaborate on modular web applications. It does not claim universal applicability, autonomous agent ownership, or replacement of traditional architectures.

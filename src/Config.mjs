@@ -15,12 +15,15 @@ export default class TeqFw_Site_Config {
     const {fileURLToPath} = nodeUrl;
     const metaPath = fileURLToPath(new URL("../meta/site.json", import.meta.url));
     const demoPagesMetaPath = fileURLToPath(new URL("../meta/demo-pages.json", import.meta.url));
+    const agentRoot = fileURLToPath(new URL("../ai/", import.meta.url));
     const templateRoot = fileURLToPath(new URL("../tmpl/", import.meta.url));
     const webRoot = fileURLToPath(new URL("../web/", import.meta.url));
     const metadata = normalizeMetadata(JSON.parse(fs.readFileSync(metaPath, "utf8")));
 
     /** @returns {*} */
     this.getBrand = () => metadata.brand;
+    /** @returns {string} */
+    this.getAgentRoot = () => agentRoot;
     /** @returns {string} */
     this.getDemoPagesMetaPath = () => demoPagesMetaPath;
     /** @returns {*} */
@@ -29,6 +32,8 @@ export default class TeqFw_Site_Config {
     this.getNavigation = () => metadata.navigation;
     /** @returns {Array<object>} */
     this.getPages = () => metadata.pages;
+    /** @returns {Array<object>} */
+    this.getPlatform = () => metadata.platform;
     /** @returns {*} */
     this.getSite = () => metadata.site;
     /** @returns {string} */
@@ -48,9 +53,27 @@ function normalizeMetadata(value) {
   const site = normalizeFields(value.site, "site", ["description", "lang", "name", "strapline", "title", "url"]);
   const brand = normalizeFields(value.brand, "brand", ["ariaLabel", "desktopText", "homeHref", "logoAlt", "logoSrc", "mobileText"]);
   const footer = normalizeFooter(value.footer);
+  const platform = normalizePlatform(value.platform);
   const pages = normalizePages(value.pages);
   const navigation = normalizeNavigation(value.navigation, pages);
-  return deepFreeze({brand, footer, navigation, pages, site: {...site, footer}});
+  return deepFreeze({brand, footer, navigation, pages, platform, site: {...site, footer}});
+}
+
+/**
+ * Normalizes the six current platform package records.
+ * @param {*} value
+ * @returns {Array<object>}
+ */
+function normalizePlatform(value) {
+  const expected = ["di", "log", "cfg", "cli", "db", "web"];
+  if (!Array.isArray(value) || value.length !== expected.length) throw new Error("platform must contain six package records");
+  return value.map((item, index) => {
+    const record = normalizeFields(item, `platform[${index}]`, ["id", "name", "repository", "role", "skill"]);
+    if (record.id !== expected[index]) throw new Error(`platform[${index}].id must be ${expected[index]}`);
+    if (!record.repository.startsWith("https://github.com/teqfw/")) throw new Error(`platform[${index}].repository must target a TeqFW GitHub repository`);
+    if (!record.skill.startsWith(`${record.repository}/tree/main/skills/teqfw-`)) throw new Error(`platform[${index}].skill must be the version-matched skill catalog`);
+    return record;
+  });
 }
 
 /**
@@ -74,6 +97,7 @@ function normalizeFooter(value) {
 function normalizePages(value) {
   if (!Array.isArray(value) || value.length === 0) throw new Error("site metadata pages must be a non-empty array");
   const routes = new Set();
+  const markdownRoutes = new Set();
   return value.map((page, index) => {
     const path = `pages[${index}]`;
     const record = normalizeFields(page, path, ["id", "intro", "isNavigable", "route", "summary", "template", "title"]);
@@ -82,6 +106,13 @@ function normalizePages(value) {
     record.area = normalizeArea(page.area ?? deriveAreaFromRoute(record.route), `${path}.area`);
     record.isDemoGenerated = false;
     record.isSitemap = normalizeBoolean(page.isSitemap, `${path}.isSitemap`);
+    if (page.markdownRoute !== undefined) {
+      record.markdownRoute = normalizeMachineRoute(page.markdownRoute, `${path}.markdownRoute`);
+      if (markdownRoutes.has(record.markdownRoute)) throw new Error(`${path}.markdownRoute duplicates ${record.markdownRoute}`);
+      markdownRoutes.add(record.markdownRoute);
+    } else if (record.isSitemap) {
+      throw new Error(`${path}.markdownRoute is required for sitemap pages`);
+    }
     if (typeof record.isNavigable !== "boolean") throw new Error(`${path}.isNavigable must be a boolean`);
     assertRoute(record.route, `${path}.route`);
     if (routes.has(record.route)) throw new Error(`${path}.route duplicates ${record.route}`);
@@ -205,6 +236,18 @@ function assertRecord(value, path) {
 function assertRoute(value, path) {
   assertString(value, path);
   if (!value.startsWith("/")) throw new Error(`${path} must be an absolute route`);
+}
+
+/**
+ * Requires a safe public machine-document route.
+ * @param {*} value
+ * @param {string} path
+ * @returns {string}
+ */
+function normalizeMachineRoute(value, path) {
+  assertRoute(value, path);
+  if (!/^\/(?:[a-z0-9-]+\/)*[a-z0-9-]+\.md$/u.test(value)) throw new Error(`${path} must be a safe public Markdown route`);
+  return value.replace(/\/+$/u, "") || "/";
 }
 
 /**

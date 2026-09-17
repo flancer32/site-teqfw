@@ -36,6 +36,7 @@ export default class TeqFw_Site_Model_Renderer {
         footer: config.getFooter(),
         navigation: navigation.getItems(route),
         page,
+        platform: config.getPlatform(),
         site: config.getSite(),
       });
     };
