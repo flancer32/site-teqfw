@@ -23,13 +23,17 @@ test("AgentMessage archives when SMTP is not configured", async () => {
 test("AgentMessage falls back when SMTP delivery fails", async () => {
   const calls = [];
   const mail = {host: "mail.example.test"};
+  const failure = new Error("unavailable");
   const messages = new AgentMessage({
     archive: {save: async (record) => calls.push(["archive", record])},
     config: {getMail: () => mail},
-    logger: {forSource: () => ({info: (message) => calls.push(["log", message])})},
+    logger: {forSource: () => ({
+      error: (message, data) => calls.push(["error", message, data]),
+      info: (message) => calls.push(["log", message]),
+    })},
     mailer: {send: async (record) => {
       calls.push(["mail", record]);
-      throw new Error("unavailable");
+      throw failure;
     }},
   });
 
@@ -37,6 +41,7 @@ test("AgentMessage falls back when SMTP delivery fails", async () => {
 
   assert.deepEqual(calls, [
     ["mail", {agent: "codex", mail, message: "Please review this change."}],
+    ["error", "Agent message email delivery failed", {err: failure}],
     ["archive", {agent: "codex", message: "Please review this change."}],
     ["log", "Agent message stored locally"],
   ]);

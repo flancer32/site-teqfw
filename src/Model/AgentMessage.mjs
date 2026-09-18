@@ -29,7 +29,8 @@ export default class TeqFw_Site_Model_AgentMessage {
           await mailer.send({...record, mail});
           log.info("Agent message delivered by email");
           return;
-        } catch {
+        } catch (error) {
+          log.error("Agent message email delivery failed", {err: error});
           // Local persistence is the required fallback for every SMTP failure.
         }
       }

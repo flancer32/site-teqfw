@@ -3,7 +3,7 @@ declare global {
   type TeqFw_Cfg_Reader = {get(namespace: string): Record<string, unknown>};
   type TeqFw_Cfg_Source_DotenvFile = {create(options: {path: string, id?: string}): TeqFw_Cfg_Source};
   type TeqFw_Cfg_Source_ProcessEnv = {create(environment: NodeJS.ProcessEnv, id?: string): TeqFw_Cfg_Source};
-  type TeqFw_Log_Provider = {forSource(source: string): {info(message: string): void}};
+  type TeqFw_Log_Provider = {forSource(source: string): {error(message: string, data?: {err?: unknown}): void, info(message: string): void}};
   type TeqFw_Site_AgentMessage_Record = {agent: string, message: string};
   type TeqFw_Site_AgentMessage_Mail = {from: string, host: string, password?: string, port: number, recipient: string, transport: "implicit-tls"|"plain"|"starttls", user?: string};
   type TeqFw_Site_AgentMessage_Delivery = {agent: string, mail: TeqFw_Site_AgentMessage_Mail, message: string};
