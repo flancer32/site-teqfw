@@ -13,6 +13,7 @@ test("Config exposes immutable TeqFW-first site metadata", () => {
   assert.equal(config.getBrand().desktopText, "Tequila Framework");
   assert.equal(config.getFooter().identity, "Tequila Framework");
   assert.deepEqual(config.getPlatform().map((item) => item.id), ["di", "log", "cfg", "cli", "db", "web"]);
+  for (const item of config.getPlatform()) assert.equal(item.skill, `https://raw.githubusercontent.com/teqfw/${item.id}/main/skills/teqfw-${item.id}/SKILL.md`);
   assert.match(config.getWebRoot(), /[\\/]web[\\/]$/);
   assert.deepEqual(config.getNavigation().primary, ["/ecosystem", "/ecosystem/philosophy", "/showcase", "/contacts"]);
   assert.deepEqual(pages.map((page) => page.route), ["/", "/ecosystem", "/ecosystem/philosophy", "/showcase", "/method", "/demo/pages/", "/contacts"]);

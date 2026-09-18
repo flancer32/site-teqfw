@@ -7,6 +7,7 @@ test("Cli Plugin composes the pipeline through the CLI lifecycle", async () => {
   const calls = [];
   const plugin = Plugin({
     controller: {name: "controller"},
+    discovery: {name: "discovery"},
     logHandler: {name: "log"},
     logger: {forSource: (source) => ({info: (message) => calls.push(["log", source, message])})},
     pipeline: {addHandler: (handler) => calls.push(["handler", handler.name])},
@@ -22,6 +23,7 @@ test("Cli Plugin composes the pipeline through the CLI lifecycle", async () => {
   assert.deepEqual(calls, [
     ["static", ["source"]],
     ["handler", "log"],
+    ["handler", "discovery"],
     ["handler", "static"],
     ["handler", "controller"],
     ["log", "TeqFw_Site_Cli_Plugin", "SSR site handlers initialized"],

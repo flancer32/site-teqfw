@@ -68,7 +68,8 @@ function normalizePlatform(value) {
     const record = normalizeFields(item, `platform[${index}]`, ["id", "name", "repository", "role", "skill"]);
     if (record.id !== expected[index]) throw new Error(`platform[${index}].id must be ${expected[index]}`);
     if (!record.repository.startsWith("https://github.com/teqfw/")) throw new Error(`platform[${index}].repository must target a TeqFW GitHub repository`);
-    if (!record.skill.startsWith(`${record.repository}/tree/main/skills/teqfw-`)) throw new Error(`platform[${index}].skill must be the version-matched skill catalog`);
+    const expectedSkill = `https://raw.githubusercontent.com/teqfw/${record.id}/main/skills/teqfw-${record.id}/SKILL.md`;
+    if (record.skill !== expectedSkill) throw new Error(`platform[${index}].skill must be the canonical version-matched SKILL.md`);
     return record;
   });
 }

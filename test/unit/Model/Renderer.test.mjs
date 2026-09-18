@@ -52,13 +52,13 @@ test("Renderer presents the complete TeqFW philosophy and plugin skills", async 
   assert.match(philosophy, /1\. Unified development language/);
   assert.match(philosophy, /8\. Explicit machine interfaces/);
   assert.match(philosophy, /skills\/&lt;name&gt;\/SKILL\.md/);
-  assert.match(philosophy, /https:\/\/github\.com\/teqfw\/di\/tree\/main\/skills\/teqfw-di/);
-  assert.match(philosophy, /https:\/\/github\.com\/teqfw\/web\/tree\/main\/skills\/teqfw-web/);
+  assert.match(philosophy, /https:\/\/raw\.githubusercontent\.com\/teqfw\/di\/main\/skills\/teqfw-di\/SKILL\.md/);
+  assert.match(philosophy, /https:\/\/raw\.githubusercontent\.com\/teqfw\/web\/main\/skills\/teqfw-web\/SKILL\.md/);
 
   const ecosystem = await createRenderer().render("/ecosystem");
   assert.match(ecosystem, /Every plugin explains how agents use it/);
   for (const repository of ["di", "log", "cfg", "cli", "db", "web"]) assert.match(ecosystem, new RegExp(`href="https://github\\.com/teqfw/${repository}"`));
-  assert.match(ecosystem, /https:\/\/github\.com\/teqfw\/cli\/tree\/main\/skills\/teqfw-cli/);
+  assert.match(ecosystem, /https:\/\/raw\.githubusercontent\.com\/teqfw\/cli\/main\/skills\/teqfw-cli\/SKILL\.md/);
   assert.match(ecosystem, /<link rel="alternate" type="text\/markdown" href="\/ecosystem\.md">/);
 });
 

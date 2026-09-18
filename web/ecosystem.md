@@ -8,13 +8,13 @@ The ecosystem is a progression from platform mechanisms to reusable functionalit
 
 `@teqfw/di` is the foundational plugin. It provides namespace-based dependency resolution, runtime composition, and late binding. The complementary packages are:
 
-- [`@teqfw/log`](https://github.com/teqfw/log) — logging infrastructure. [Agent skill](https://github.com/teqfw/log/tree/main/skills/teqfw-log).
-- [`@teqfw/cfg`](https://github.com/teqfw/cfg) — application and plugin configuration. [Agent skill](https://github.com/teqfw/cfg/tree/main/skills/teqfw-cfg).
-- [`@teqfw/cli`](https://github.com/teqfw/cli) — Node.js lifecycle and CLI composition. [Agent skill](https://github.com/teqfw/cli/tree/main/skills/teqfw-cli).
-- [`@teqfw/db`](https://github.com/teqfw/db) — database infrastructure. [Agent skill](https://github.com/teqfw/db/tree/main/skills/teqfw-db).
-- [`@teqfw/web`](https://github.com/teqfw/web) — web and server runtime infrastructure. [Agent skill](https://github.com/teqfw/web/tree/main/skills/teqfw-web).
+- [`@teqfw/log`](https://github.com/teqfw/log) — logging infrastructure. [Agent skill](https://raw.githubusercontent.com/teqfw/log/main/skills/teqfw-log/SKILL.md).
+- [`@teqfw/cfg`](https://github.com/teqfw/cfg) — application and plugin configuration. [Agent skill](https://raw.githubusercontent.com/teqfw/cfg/main/skills/teqfw-cfg/SKILL.md).
+- [`@teqfw/cli`](https://github.com/teqfw/cli) — Node.js lifecycle and CLI composition. [Agent skill](https://raw.githubusercontent.com/teqfw/cli/main/skills/teqfw-cli/SKILL.md).
+- [`@teqfw/db`](https://github.com/teqfw/db) — database infrastructure. [Agent skill](https://raw.githubusercontent.com/teqfw/db/main/skills/teqfw-db/SKILL.md).
+- [`@teqfw/web`](https://github.com/teqfw/web) — web and server runtime infrastructure. [Agent skill](https://raw.githubusercontent.com/teqfw/web/main/skills/teqfw-web/SKILL.md).
 
-The foundational package also publishes its [agent skill](https://github.com/teqfw/di/tree/main/skills/teqfw-di). Each skill is version-matched package guidance describing public contracts, integration patterns, and architectural assumptions. A consuming project may mount it in `.agents/skills/`. Skills complement README files and source code; they do not replace them.
+The foundational package also publishes its [agent skill](https://raw.githubusercontent.com/teqfw/di/main/skills/teqfw-di/SKILL.md). Each skill is version-matched package guidance describing public contracts, integration patterns, and architectural assumptions. A consuming project may mount it in `.agents/skills/`. Skills complement README files and source code; they do not replace them.
 
 ## Reusable plugins and applications
 

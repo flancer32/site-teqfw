@@ -3,12 +3,12 @@
   "brand": {"ariaLabel": "TeqFW home", "desktopText": "Tequila Framework", "homeHref": "/", "logoAlt": "", "logoSrc": "/favicon.ico", "mobileText": "TeqFW"},
   "footer": {"author": {"label": "Alex Gusev", "route": "/contacts"}, "identity": "Tequila Framework", "statement": "Enterprise architecture. Vanilla JavaScript."},
   "platform": [
-    {"id": "di", "name": "@teqfw/di", "repository": "https://github.com/teqfw/di", "role": "Foundational namespace resolution, dependency container, runtime composition, and late binding.", "skill": "https://github.com/teqfw/di/tree/main/skills/teqfw-di"},
-    {"id": "log", "name": "@teqfw/log", "repository": "https://github.com/teqfw/log", "role": "Logging infrastructure.", "skill": "https://github.com/teqfw/log/tree/main/skills/teqfw-log"},
-    {"id": "cfg", "name": "@teqfw/cfg", "repository": "https://github.com/teqfw/cfg", "role": "Application and plugin configuration.", "skill": "https://github.com/teqfw/cfg/tree/main/skills/teqfw-cfg"},
-    {"id": "cli", "name": "@teqfw/cli", "repository": "https://github.com/teqfw/cli", "role": "Node.js application lifecycle and CLI composition.", "skill": "https://github.com/teqfw/cli/tree/main/skills/teqfw-cli"},
-    {"id": "db", "name": "@teqfw/db", "repository": "https://github.com/teqfw/db", "role": "Database infrastructure.", "skill": "https://github.com/teqfw/db/tree/main/skills/teqfw-db"},
-    {"id": "web", "name": "@teqfw/web", "repository": "https://github.com/teqfw/web", "role": "Web and server runtime infrastructure.", "skill": "https://github.com/teqfw/web/tree/main/skills/teqfw-web"}
+    {"id": "di", "name": "@teqfw/di", "repository": "https://github.com/teqfw/di", "role": "Foundational namespace resolution, dependency container, runtime composition, and late binding.", "skill": "https://raw.githubusercontent.com/teqfw/di/main/skills/teqfw-di/SKILL.md"},
+    {"id": "log", "name": "@teqfw/log", "repository": "https://github.com/teqfw/log", "role": "Logging infrastructure.", "skill": "https://raw.githubusercontent.com/teqfw/log/main/skills/teqfw-log/SKILL.md"},
+    {"id": "cfg", "name": "@teqfw/cfg", "repository": "https://github.com/teqfw/cfg", "role": "Application and plugin configuration.", "skill": "https://raw.githubusercontent.com/teqfw/cfg/main/skills/teqfw-cfg/SKILL.md"},
+    {"id": "cli", "name": "@teqfw/cli", "repository": "https://github.com/teqfw/cli", "role": "Node.js application lifecycle and CLI composition.", "skill": "https://raw.githubusercontent.com/teqfw/cli/main/skills/teqfw-cli/SKILL.md"},
+    {"id": "db", "name": "@teqfw/db", "repository": "https://github.com/teqfw/db", "role": "Database infrastructure.", "skill": "https://raw.githubusercontent.com/teqfw/db/main/skills/teqfw-db/SKILL.md"},
+    {"id": "web", "name": "@teqfw/web", "repository": "https://github.com/teqfw/web", "role": "Web and server runtime infrastructure.", "skill": "https://raw.githubusercontent.com/teqfw/web/main/skills/teqfw-web/SKILL.md"}
   ],
   "pages": [
     {"hero": {"cta": "Explore the ecosystem", "ctaHref": "/ecosystem", "secondaryCta": "View the Showcase", "secondaryCtaHref": "/showcase", "kicker": "A modular JavaScript platform", "title": "Enterprise architecture. Vanilla JavaScript."}, "id": "home", "intro": "TeqFW adapts mature architectural ideas to modern JavaScript for web applications that remain explicit, runtime-composable, and inspectable.", "isSitemap": true, "isNavigable": false, "markdownRoute": "/index.md", "route": "/", "area": "home", "summary": "Tequila Framework is a modular JavaScript platform for web applications built through runtime composition and late binding.", "template": "page/index.html", "title": "TeqFW"},

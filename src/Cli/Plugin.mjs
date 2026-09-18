@@ -7,6 +7,7 @@
 
 /**
  * @param {object} deps
+ * @param {TeqFw_Site_Controller_Discovery} deps.discovery
  * @param {TeqFw_Site_Controller_Ssr} deps.controller
  * @param {TeqFw_Web_Back_Handler_Pre_Log} deps.logHandler
  * @param {TeqFw_Log_Provider} deps.logger
@@ -15,7 +16,7 @@
  * @param {TeqFw_Web_Back_Handler_Static} deps.staticHandler
  * @returns {TeqFw_Cli_Api_Plugin}
  */
-export default function TeqFw_Site_Cli_Plugin({controller, logHandler, logger, pipeline, staticFiles, staticHandler}) {
+export default function TeqFw_Site_Cli_Plugin({controller, discovery, logHandler, logger, pipeline, staticFiles, staticHandler}) {
   const log = logger.forSource("TeqFw_Site_Cli_Plugin");
   let started = false;
 
@@ -25,6 +26,7 @@ export default function TeqFw_Site_Cli_Plugin({controller, logHandler, logger, p
       if (started) return;
       await staticHandler.init({sources: staticFiles.getSources()});
       pipeline.addHandler(logHandler);
+      pipeline.addHandler(discovery);
       pipeline.addHandler(staticHandler);
       pipeline.addHandler(controller);
       started = true;
@@ -41,6 +43,7 @@ export default function TeqFw_Site_Cli_Plugin({controller, logHandler, logger, p
 export const __deps__ = Object.freeze({
   default: Object.freeze({
     controller: "TeqFw_Site_Controller_Ssr$",
+    discovery: "TeqFw_Site_Controller_Discovery$",
     logHandler: "TeqFw_Web_Back_Handler_Pre_Log$",
     logger: "TeqFw_Log_Provider$",
     pipeline: "TeqFw_Web_Back_PipelineEngine$",

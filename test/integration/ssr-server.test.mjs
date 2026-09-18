@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import Config from "../../src/Config.mjs";
+import Discovery from "../../src/Controller/Discovery.mjs";
 import DemoPages from "../../src/Model/DemoPages.mjs";
 import Navigation from "../../src/Model/Navigation.mjs";
 import Page from "../../src/Model/Page.mjs";
@@ -11,6 +12,7 @@ import SiteMap from "../../src/Model/SiteMap.mjs";
 
 test("SSR composition modules remain loadable", () => {
   assert.equal(typeof Config, "function");
+  assert.equal(typeof Discovery, "function");
   assert.equal(typeof DemoPages, "function");
   assert.equal(typeof Navigation, "function");
   assert.equal(typeof Page, "function");
