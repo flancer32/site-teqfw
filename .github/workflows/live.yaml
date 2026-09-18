@@ -98,6 +98,12 @@ jobs:
               cp prod.old/.env prod/.env
             fi
 
+            # Preserve locally queued agent messages across release replacement.
+            if [ -d prod.old/var/msg ]; then
+              mkdir -p prod.new/var
+              cp -a prod.old/var/msg prod.new/var/msg
+            fi
+
             # Start cluster (4 workers)
             cd "${{ env.APP_DIR }}/prod"
 

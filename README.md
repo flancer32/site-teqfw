@@ -37,6 +37,10 @@ npm start
 
 `npm start` runs `teq web:start`; the built-in web server uses port `3000` by default. Configuration is read through `@teqfw/cfg` from `.env` and the process environment.
 
+## Agent Messages
+
+Agents can send an English-compatible ASCII operational message through `GET /agent/message`. The request contract, including the required headers, is in [web/agent-guide.md](web/agent-guide.md). The server reads its fixed recipient and SMTP settings from `.env`; when SMTP is unavailable, it saves the message beneath `var/msg/`.
+
 ## Validation
 
 ```bash

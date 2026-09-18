@@ -6,6 +6,7 @@ import Plugin from "../../../src/Cli/Plugin.mjs";
 test("Cli Plugin composes the pipeline through the CLI lifecycle", async () => {
   const calls = [];
   const plugin = Plugin({
+    agentMessage: {name: "agentMessage"},
     controller: {name: "controller"},
     discovery: {name: "discovery"},
     logHandler: {name: "log"},
@@ -25,6 +26,7 @@ test("Cli Plugin composes the pipeline through the CLI lifecycle", async () => {
     ["handler", "log"],
     ["handler", "discovery"],
     ["handler", "static"],
+    ["handler", "agentMessage"],
     ["handler", "controller"],
     ["log", "TeqFw_Site_Cli_Plugin", "SSR site handlers initialized"],
   ]);

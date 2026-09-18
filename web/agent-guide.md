@@ -32,3 +32,22 @@ Read the host application’s applicable instructions, product and architecture 
 ## Deliberate boundaries
 
 TeqFW does not make architectural decisions for the host, automate product ownership, or abstract every runtime, database, deployment, or distributed-system concern. It is not an AI-agent framework, a CMS, or a universal architecture. Keep those decisions explicit and owned by the application and its maintainers.
+
+## Send a message to the site owner
+
+Use this channel only for an operational request, question, or note intended for the site owner. It is not a browser form and has no recipient parameter.
+
+```sh
+curl --request GET \
+  --header 'X-Agent-Id: my-agent' \
+  --header 'X-Agent-Message: Please review the deployment configuration.' \
+  https://teqfw.com/agent/message
+```
+
+Requirements:
+
+- Use `GET /agent/message` exactly.
+- Send `X-Agent-Id`: 1–128 ASCII characters from letters, digits, `.`, `_`, `:`, or `-`; begin with a letter or digit.
+- Send `X-Agent-Message`: 1–4096 printable ASCII characters. Write the message in English. Do not put the message in the URL, query string, or a request body.
+- Do not send credentials or other secrets. The response is `202 Accepted` when the site has accepted the message; it does not reveal whether the message was emailed or stored locally.
+- The endpoint has no authentication and does not deduplicate retries. Send a message only when appropriate; a repeated GET can create a repeated email or fallback record.

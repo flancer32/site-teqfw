@@ -7,6 +7,7 @@
 
 /**
  * @param {object} deps
+ * @param {TeqFw_Site_Controller_AgentMessage} deps.agentMessage
  * @param {TeqFw_Site_Controller_Discovery} deps.discovery
  * @param {TeqFw_Site_Controller_Ssr} deps.controller
  * @param {TeqFw_Web_Back_Handler_Pre_Log} deps.logHandler
@@ -16,7 +17,7 @@
  * @param {TeqFw_Web_Back_Handler_Static} deps.staticHandler
  * @returns {TeqFw_Cli_Api_Plugin}
  */
-export default function TeqFw_Site_Cli_Plugin({controller, discovery, logHandler, logger, pipeline, staticFiles, staticHandler}) {
+export default function TeqFw_Site_Cli_Plugin({agentMessage, controller, discovery, logHandler, logger, pipeline, staticFiles, staticHandler}) {
   const log = logger.forSource("TeqFw_Site_Cli_Plugin");
   let started = false;
 
@@ -28,6 +29,7 @@ export default function TeqFw_Site_Cli_Plugin({controller, discovery, logHandler
       pipeline.addHandler(logHandler);
       pipeline.addHandler(discovery);
       pipeline.addHandler(staticHandler);
+      pipeline.addHandler(agentMessage);
       pipeline.addHandler(controller);
       started = true;
       log.info("SSR site handlers initialized");
@@ -42,6 +44,7 @@ export default function TeqFw_Site_Cli_Plugin({controller, discovery, logHandler
 
 export const __deps__ = Object.freeze({
   default: Object.freeze({
+    agentMessage: "TeqFw_Site_Controller_AgentMessage$",
     controller: "TeqFw_Site_Controller_Ssr$",
     discovery: "TeqFw_Site_Controller_Discovery$",
     logHandler: "TeqFw_Web_Back_Handler_Pre_Log$",
