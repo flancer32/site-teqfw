@@ -1,124 +1,120 @@
 # Root Level
 
 - Path: `AGENTS.md`
-- Template Version: `20260420`
+- Template Version: `20260720`
+- Changed: `YYYYMMDD`
 
 ## Purpose
 
-This root file defines the invariant rules of ADSM (Agent-Driven Software Management), establishes the roles of the Human and the Agent, specifies the resolution model of the cognitive context, and determines global operational constraints; it is read by the agent before any project-level instructions.
+This file defines the root-level working rules for the project repository.
+
+This file is the first instruction source for every agent operating within the repository.
 
 ## Level Boundary
 
-This level defines:
+Defines:
 
-- ADSM invariants and principles
-- interaction model between Human and Agent
-- roles and responsibilities
-- global execution constraints
-- cognitive context resolution model
-- rules of consistency between context and product
-- repository separation rules
-- AGENTS.md hierarchy and resolution model
+- Root-level working boundaries between the repository, the cognitive context, and the software product.
+- Repository-topology rules needed to work safely when `ctx/` may be mounted separately.
+- Root-level protection and escalation rules for this project.
 
-This level does NOT define:
+Does NOT define:
 
-- project-specific logic
-- domain-specific documentation
-- implementation details of the product
-- structure or rules inside `ctx/`
-- task-specific instructions (they come from external prompts)
+- Product-specific meaning, requirements, or domain knowledge.
+- Implementation-level structure such as source code, runtime details, or filesystem layout.
+- Task-specific instructions, workflows, or local operational procedures.
 
-## ADSM Principles
+## ADSM Project Model
 
-### Project Spaces
+An ADSM project consists of two interconnected spaces:
 
-A project consists of two interconnected spaces: the **Cognitive Context** (located in `./ctx/`) and the **Software Product** (all files outside `ctx/`); the context governs modifications of the product, and the product reflects application of the context.
+- the **Cognitive Context** located in `./ctx/`
+- the **Software Product** located outside `./ctx/`
 
-The cognitive context may exist as a standalone repository but MUST be mounted under `./ctx/` for execution. The location `./ctx/` is the canonical execution location of the cognitive context.
+The cognitive context is the long-term textual memory of the project.
 
-### Published Product Documentation
+The cognitive context is the primary communication medium between Humans and Agents working on the project.
 
-The software product MAY include published documentation distributed with the product.
+The cognitive context is the authoritative knowledge source used by Agents when modifying the project.
 
-When present:
+The software product is the implementation that must be kept consistent with the cognitive context.
 
-- `./ai/` denotes agent-facing product documentation.
-- `./docs/` denotes human-facing product documentation.
+## Human and Agent Roles
 
-Such documentation belongs to the software product, not to the cognitive context, and MUST NOT replace or redefine `./ctx/`.
+The Human defines goals, authorizes work, evaluates outcomes, and evolves the project.
 
-### Interaction Model
+The Agent interprets the cognitive context, performs assigned tasks, modifies the project within task boundaries, and maintains consistency between the cognitive context and the software product.
 
-The Human defines goals, maintains the context, and approves changes; the Agent interprets the context and modifies the product strictly within its boundaries; each iteration terminates with a report, whose structure and format are defined within the cognitive context.
+The Agent operates through text and must treat project documentation as operational memory, not as secondary commentary.
 
-## Roles
+## Cognitive Context
 
-**Human:** defines goals, maintains context, approves modifications, evolves structure.  
-**Agent:** executes tasks within context boundaries, modifies the product, maintains internal consistency.
+The canonical execution location of the cognitive context is `./ctx/`.
 
-## Context Resolution
+Project-specific knowledge, requirements, architecture, environment descriptions, and implementation guidance are defined within the cognitive context.
 
-Agent behavior is determined exclusively by documents of the cognitive context (located in `./ctx/`).
+The Agent must consult `./ctx/AGENTS.md` for project-specific instructions when `./ctx/` exists.
 
-The entry point of the cognitive context is:
+The Agent must consult `./ctx/docs/filesystem.md` for the project filesystem structure and documentation layout when that file exists.
 
-```
-ctx/AGENTS.md
-```
+Documentation distributed with the software product may exist outside `./ctx/`, but it does not replace, redefine, or supersede the cognitive context.
 
-The external prompt defines the task but MUST be interpreted strictly within the cognitive context.
+## Bootstrap and Repository Topology
 
-If a contradiction occurs between the prompt and the cognitive context, the cognitive context takes precedence.
+An ADSM project may use one repository or two repositories.
 
-The agent MUST interpret the prompt through the context before performing any action.
+In a one-repository topology, the software product and the cognitive context are versioned together.
 
-If the cognitive context (`./ctx/`) is missing, empty, or inaccessible, the agent MUST NOT perform any actions and MUST terminate with an execution error. The agent MAY report this error using any format permitted by the current interaction channel.
+In a two-repository topology, the software product and the cognitive context are independent version-controlled repositories, and the cognitive context repository is mounted under `./ctx/`.
 
-## Context vs Code Consistency
+The Agent must detect whether `./ctx/` is part of the current repository or an independent repository.
 
-If a mismatch between the cognitive context (`./ctx/`) and the software product is detected, the context MUST be treated as the source of truth.
+The Agent must preserve repository boundaries.
 
-The agent MUST modify the product to match the context.
+The Agent must not mix changes between independent repositories.
 
-Modification of the context is allowed only if explicitly required by the task defined in the prompt.
+The Agent must not remove, replace, relocate, or unmount `./ctx/`.
 
-## Repository Boundaries
+If `./ctx/` does not exist, the Agent may perform bootstrap operations required to create the initial cognitive context structure.
 
-The cognitive context (`./ctx/`) MAY be mounted from a separate repository.
+After bootstrap is complete, `./ctx/AGENTS.md` becomes the entry point for project-specific instructions.
 
-In such cases, the context and the product MUST be treated as independent version-controlled spaces.
+## Context and Product Consistency
 
-### Rules
+The cognitive context is the source of truth for the project.
 
-- Changes in `./ctx/` MUST be committed and pushed to the context repository.
-- Changes outside `./ctx/` MUST be committed and pushed to the product repository.
-- The agent MUST NOT mix changes between these repositories.
-- The agent MUST NOT remove, replace, or unmount the `./ctx/` directory.
+If the cognitive context and the software product diverge, the Agent must treat the cognitive context as authoritative.
 
-Violation of these rules constitutes an execution error.
+The Agent must maintain consistency between the cognitive context and the software product.
+
+The Agent may modify the cognitive context when required by the assigned task and when the modification remains consistent with higher-level context constraints.
+
+The Agent may modify the software product when required by the assigned task and when the modification remains consistent with the cognitive context.
 
 ## AGENTS.md Hierarchy
 
-If additional `AGENTS.md` files exist in subdirectories, they define local constraints within their directory level.
+Additional `AGENTS.md` files may exist in subdirectories.
 
-When executing a task in directory `X`, the working context of the agent is the aggregate of all `AGENTS.md` files along the path from the project root to `X`.
+The effective working context of the agent is the aggregate of all `AGENTS.md` files located along the path from the repository root to the target directory.
 
 Rules:
 
 - deeper levels override higher levels within their scope
-- root-level invariants are mandatory and cannot be overridden
-- all levels must form a coherent and non-contradictory system
+- root-level invariants cannot be overridden
+- all levels must remain mutually consistent
 
-## Compatibility
+## Root File Protection
 
-The root `AGENTS.md` defines methodological invariants and is reused across projects; project-specific rules are defined exclusively within the cognitive context (located in `./ctx/`).
+This file defines root-level project control rules.
 
-## Change Policy
+The agent must not modify, replace, delete, relocate, or reinterpret this file unless explicitly instructed by the human.
 
-This file is a template-level definition and is not subject to modification within the project.
+Violation of this rule constitutes an execution error.
 
-- The agent must not modify, replace, delete, or relocate this file
-- The agent must not introduce changes that effectively alter its content or presence in the repository
-- Updates to this file are performed only at the template level and propagated explicitly
+## Secret Handling
 
-Violation of these rules constitutes an execution error.
+The Agent must never read, load, print, search for, or expose secret-bearing project files, including `.env` and `.env.*` files, credentials, private keys, tokens, or secret stores. This rule applies even when a file is Git-ignored and includes broad search or command output that could reveal its contents.
+
+The Agent may use a non-secret example template such as `.env.example` only to learn the configuration shape. It must not infer or request the value of any secret.
+
+If secret data is exposed accidentally, the Agent must stop handling that value, must not repeat it, and must tell the Human that the secret should be rotated or revoked.
